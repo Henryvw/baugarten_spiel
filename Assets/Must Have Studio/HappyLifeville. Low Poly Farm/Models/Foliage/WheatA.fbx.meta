@@ -1,0 +1,287 @@
+fileFormatVersion: 2
+guid: 2925fbe1dd260dd4198697ebda8c408f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: _0
+    100002: _1
+    100004: _10
+    100006: _11
+    100008: _12
+    100010: _13
+    100012: _14
+    100014: _15
+    100016: _16
+    100018: _17
+    100020: _18
+    100022: _19
+    100024: _2
+    100026: _20
+    100028: _21
+    100030: _22
+    100032: _23
+    100034: _24
+    100036: _25
+    100038: _26
+    100040: _27
+    100042: _28
+    100044: _29
+    100046: _3
+    100048: _30
+    100050: _31
+    100052: _32
+    100054: _33
+    100056: _34
+    100058: _35
+    100060: _36
+    100062: _37
+    100064: _38
+    100066: _39
+    100068: _4
+    100070: _40
+    100072: _41
+    100074: _42
+    100076: _43
+    100078: _44
+    100080: _45
+    100082: _46
+    100084: _47
+    100086: _5
+    100088: _6
+    100090: _7
+    100092: _8
+    100094: _9
+    100096: Root
+    100098: //RootNode
+    400000: _0
+    400002: _1
+    400004: _10
+    400006: _11
+    400008: _12
+    400010: _13
+    400012: _14
+    400014: _15
+    400016: _16
+    400018: _17
+    400020: _18
+    400022: _19
+    400024: _2
+    400026: _20
+    400028: _21
+    400030: _22
+    400032: _23
+    400034: _24
+    400036: _25
+    400038: _26
+    400040: _27
+    400042: _28
+    400044: _29
+    400046: _3
+    400048: _30
+    400050: _31
+    400052: _32
+    400054: _33
+    400056: _34
+    400058: _35
+    400060: _36
+    400062: _37
+    400064: _38
+    400066: _39
+    400068: _4
+    400070: _40
+    400072: _41
+    400074: _42
+    400076: _43
+    400078: _44
+    400080: _45
+    400082: _46
+    400084: _47
+    400086: _5
+    400088: _6
+    400090: _7
+    400092: _8
+    400094: _9
+    400096: Root
+    400098: //RootNode
+    2100000: MainMaterial__Instance___Instance_
+    4300000: WheatA
+    7400000: Wheat 03
+    7400002: Wheat 02
+    7400004: Wheat 01
+    9500000: //RootNode
+    13700000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainMaterial__Instance___Instance_
+    second: {fileID: 2100000, guid: 49634c222d567f048a18ad3b0fbce5bf, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Wheat 03
+      takeName: Wheat 03
+      firstFrame: 0
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Wheat 02
+      takeName: Wheat 02
+      firstFrame: 0
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Wheat 01
+      takeName: Wheat 01
+      firstFrame: 0
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

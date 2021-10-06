@@ -1,0 +1,383 @@
+fileFormatVersion: 2
+guid: c01d9eeb6ae013547b1f3e361b31b94e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: _0
+    100002: _1
+    100004: _10
+    100006: _11
+    100008: _12
+    100010: _13
+    100012: _14
+    100014: _15
+    100016: _16
+    100018: _17
+    100020: _18
+    100022: _19
+    100024: _2
+    100026: _20
+    100028: _21
+    100030: _22
+    100032: _23
+    100034: _24
+    100036: _25
+    100038: _26
+    100040: _27
+    100042: _28
+    100044: _29
+    100046: _3
+    100048: _30
+    100050: _31
+    100052: _32
+    100054: _33
+    100056: _34
+    100058: _35
+    100060: _36
+    100062: _37
+    100064: _38
+    100066: _39
+    100068: _4
+    100070: _40
+    100072: _41
+    100074: _42
+    100076: _43
+    100078: _44
+    100080: _45
+    100082: _46
+    100084: _47
+    100086: _48
+    100088: _49
+    100090: _5
+    100092: _50
+    100094: _51
+    100096: _52
+    100098: _53
+    100100: _54
+    100102: _55
+    100104: _56
+    100106: _57
+    100108: _58
+    100110: _59
+    100112: _6
+    100114: _60
+    100116: _61
+    100118: _62
+    100120: _63
+    100122: _64
+    100124: _65
+    100126: _66
+    100128: _67
+    100130: _68
+    100132: _69
+    100134: _7
+    100136: _70
+    100138: _71
+    100140: _72
+    100142: _73
+    100144: _74
+    100146: _75
+    100148: _76
+    100150: _77
+    100152: _78
+    100154: _79
+    100156: _8
+    100158: _80
+    100160: _81
+    100162: _82
+    100164: _83
+    100166: _84
+    100168: _85
+    100170: _86
+    100172: _87
+    100174: _88
+    100176: _89
+    100178: _9
+    100180: _90
+    100182: _91
+    100184: _92
+    100186: _93
+    100188: _94
+    100190: _95
+    100192: Root
+    100194: //RootNode
+    400000: _0
+    400002: _1
+    400004: _10
+    400006: _11
+    400008: _12
+    400010: _13
+    400012: _14
+    400014: _15
+    400016: _16
+    400018: _17
+    400020: _18
+    400022: _19
+    400024: _2
+    400026: _20
+    400028: _21
+    400030: _22
+    400032: _23
+    400034: _24
+    400036: _25
+    400038: _26
+    400040: _27
+    400042: _28
+    400044: _29
+    400046: _3
+    400048: _30
+    400050: _31
+    400052: _32
+    400054: _33
+    400056: _34
+    400058: _35
+    400060: _36
+    400062: _37
+    400064: _38
+    400066: _39
+    400068: _4
+    400070: _40
+    400072: _41
+    400074: _42
+    400076: _43
+    400078: _44
+    400080: _45
+    400082: _46
+    400084: _47
+    400086: _48
+    400088: _49
+    400090: _5
+    400092: _50
+    400094: _51
+    400096: _52
+    400098: _53
+    400100: _54
+    400102: _55
+    400104: _56
+    400106: _57
+    400108: _58
+    400110: _59
+    400112: _6
+    400114: _60
+    400116: _61
+    400118: _62
+    400120: _63
+    400122: _64
+    400124: _65
+    400126: _66
+    400128: _67
+    400130: _68
+    400132: _69
+    400134: _7
+    400136: _70
+    400138: _71
+    400140: _72
+    400142: _73
+    400144: _74
+    400146: _75
+    400148: _76
+    400150: _77
+    400152: _78
+    400154: _79
+    400156: _8
+    400158: _80
+    400160: _81
+    400162: _82
+    400164: _83
+    400166: _84
+    400168: _85
+    400170: _86
+    400172: _87
+    400174: _88
+    400176: _89
+    400178: _9
+    400180: _90
+    400182: _91
+    400184: _92
+    400186: _93
+    400188: _94
+    400190: _95
+    400192: Root
+    400194: //RootNode
+    2100000: MainMaterial__Instance___Instance_
+    4300000: SunFlowerA__1_
+    7400000: Sunflower Anim 03
+    7400002: Sunflower Anim 02
+    7400004: Sunflower Anim 01
+    9500000: //RootNode
+    13700000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainMaterial__Instance___Instance_
+    second: {fileID: 2100000, guid: 49634c222d567f048a18ad3b0fbce5bf, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Sunflower Anim 03
+      takeName: Sunflower Anim 03
+      firstFrame: 0
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Sunflower Anim 02
+      takeName: Sunflower Anim 02
+      firstFrame: 1
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Sunflower Anim 01
+      takeName: Sunflower Anim 01
+      firstFrame: 0
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
