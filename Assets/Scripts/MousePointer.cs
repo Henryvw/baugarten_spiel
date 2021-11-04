@@ -104,6 +104,31 @@ public class MousePointer : MonoBehaviour
 	    }
     }
 
+    public void SelectClearLandHoe()
+    {
+	    Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
+	    Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
+
+	    if(selectedBuilding != null)
+	    {
+		    Destroy(selectedBuilding);
+	    }
+
+	    if(currentSpawnObject == null || currentSpawnObject.name != "Tomato")
+	    {
+
+		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+
+		    currentSpawnObject = GameObject.Find("Tomato");
+		    Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
+		    selectedBuilding = Instantiate(currentSpawnObject);
+		    Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
+		    // selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+		    selectedBuilding.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+	    }
+    }
+
+
     public void SelectPowerstation()
     {
 	    if(currentSpawnObject == null || currentSpawnObject.name != "Powerstation")
