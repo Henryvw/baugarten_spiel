@@ -64,6 +64,7 @@ public class MousePointer : MonoBehaviour
 
 					EconomyManager.Instance.totalMoney -= 100;
 					Debug.Log("Left button clicked second time");
+					selectedBuilding = null;
 
 				}
 			}
