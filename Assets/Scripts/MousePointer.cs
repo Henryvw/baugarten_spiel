@@ -114,12 +114,12 @@ public class MousePointer : MonoBehaviour
 		    Destroy(selectedBuilding);
 	    }
 
-	    if(currentSpawnObject == null || currentSpawnObject.name != "Tomato")
+	    if(currentSpawnObject == null || currentSpawnObject.name != "GardenRows_Ground")
 	    {
 
 		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
-		    currentSpawnObject = GameObject.Find("Tomato");
+		    currentSpawnObject = GameObject.Find("GardenRows_Ground");
 		    Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
 		    selectedBuilding = Instantiate(currentSpawnObject);
 		    Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
@@ -129,9 +129,9 @@ public class MousePointer : MonoBehaviour
     }
 
 
-    public void SelectPowerstation()
+    public void SelectPlantSeed()
     {
-	    if(currentSpawnObject == null || currentSpawnObject.name != "Powerstation")
+	    if(currentSpawnObject == null || currentSpawnObject.name != "Tomato")
 	    {
 		    if(selectedBuilding != null)
 		    {
@@ -139,7 +139,7 @@ public class MousePointer : MonoBehaviour
 		    }
 		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
-		    currentSpawnObject = GameObject.Find("Powerstation");
+		    currentSpawnObject = GameObject.Find("Tomato");
 		    Debug.Log(currentSpawnObject);
 		    selectedBuilding = Instantiate(currentSpawnObject);
 		    Debug.Log(selectedBuilding);
