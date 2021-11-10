@@ -20,228 +20,239 @@ public class MousePointer : MonoBehaviour
 	public GameObject BuildingsPanel;
 	public bool buildingsPanelIsActive;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-	    FormulasToolkitPanel.SetActive(false);        
-	    formulasToolkitPanelIsActive = false;
+	// Start is called before the first frame update
+	void Start()
+	{
+		FormulasToolkitPanel.SetActive(false);
+		formulasToolkitPanelIsActive = false;
 
-	    BuildingsPanel.SetActive(false);        
-	    buildingsPanelIsActive = false;
-    }
+		BuildingsPanel.SetActive(false);
+		buildingsPanelIsActive = false;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-	    ray = camera.ScreenPointToRay(Input.mousePosition);
+	// Update is called once per frame
+	void Update()
+	{
+		ray = camera.ScreenPointToRay(Input.mousePosition);
 
-	    if(Physics.Raycast(ray, out hit))
-	    {
-		    Debug.DrawRay(ray.origin, ray.direction * 2000, Color.green, 3000, false);
-	    }
+		if (Physics.Raycast(ray, out hit))
+		{
+			Debug.DrawRay(ray.origin, ray.direction * 2000, Color.green, 3000, false);
+		}
 
-	    if(Input.GetMouseButtonDown(0))
-	    {
-		    Debug.Log("Left button clicked first time");
-		    Debug.Log("selectedBuilding is " + selectedBuilding);
-//			Debug.Log("Moving LEFT: mousePositionX =" + Input.mousePosition.x);
-		    if(selectedBuilding != null)
-		    {
-			    if(EconomyManager.Instance.totalMoney >= 100)
-			    {
-				    tmpObject = Instantiate(selectedBuilding);
-				    tmpObject.transform.position = hit.point;
+		if (Input.GetMouseButtonDown(0))
+		{
+			Debug.Log("Left button clicked first time");
+			Debug.Log("selectedBuilding is " + selectedBuilding);
+			//			Debug.Log("Moving LEFT: mousePositionX =" + Input.mousePosition.x);
+			if (selectedBuilding != null)
+			{
+				if (EconomyManager.Instance.totalMoney >= 100)
+				{
+					tmpObject = Instantiate(selectedBuilding);
+					tmpObject.transform.position = hit.point;
 
-				    Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point); tmpObject.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), tmpObject.transform.rotation);
-				    tmpObject.GetComponent<MeshRenderer>().material.color = Color.white;
+					Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
+					tmpObject.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), tmpObject.transform.rotation);
+					tmpObject.GetComponent<MeshRenderer>().material.color = Color.white;
 
-				    EconomyManager.Instance.totalMoney -= 100;
-				    Debug.Log("Left button clicked second time");
+					// Reenables the collider on the field so that it's "plantable"
+					if (tmpObject.GetComponent<BoxCollider>() != null)
+					{
+						tmpObject.GetComponent<BoxCollider>().enabled = true;
+					}
 
-			    }
-		    }
-	    } else if(Input.GetMouseButtonDown(1))
-	    {
-		    Debug.Log("Right button clicked");
-		    Destroy(selectedBuilding);
+					EconomyManager.Instance.totalMoney -= 100;
+					Debug.Log("Left button clicked second time");
+					selectedBuilding = null;
 
-		    // Had to add this after debugging. Without this step on Right-click, the Select methods are confused and don't reassign their objects.
-		    currentSpawnObject = null;
-	    } else
-	    {
-		    // This is the HOVER function... 
-		    if(selectedBuilding != null)
-		    {
-			    // This is a place to explore maybe a Baugarten equation coming into contact with a space
-			    Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
-			    selectedBuilding.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), selectedBuilding.transform.rotation);
-//			    Debug.Log("In hover mode");
+				}
+			}
+		}
+		else if (Input.GetMouseButtonDown(1))
+		{
+			Debug.Log("Right button clicked");
+			Destroy(selectedBuilding);
 
-		    }
-	    }
-    }
-    public void SelectHouse()
-    {
-	    Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
-	    Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
+			// Had to add this after debugging. Without this step on Right-click, the Select methods are confused and don't reassign their objects.
+			currentSpawnObject = null;
+		}
+		else
+		{
+			// This is the HOVER function... 
+			if (selectedBuilding != null)
+			{
+				// This is a place to explore maybe a Baugarten equation coming into contact with a space
+				Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
+				selectedBuilding.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), selectedBuilding.transform.rotation);
+				//			    Debug.Log("In hover mode");
 
-	    if(selectedBuilding != null)
-	    {
-		    Destroy(selectedBuilding);
-	    }
+			}
+		}
+	}
+	public void SelectHouse()
+	{
+		Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
+		Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
 
-	    if(currentSpawnObject == null || currentSpawnObject.name != "House")
-	    {
+		if (selectedBuilding != null)
+		{
+			Destroy(selectedBuilding);
+		}
 
-		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+		if (currentSpawnObject == null || currentSpawnObject.name != "House")
+		{
 
-		    currentSpawnObject = GameObject.Find("House");
-		    Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
-		    selectedBuilding = Instantiate(currentSpawnObject);
-		    Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
-		    // selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
-		    selectedBuilding.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
-	    }
-    }
+			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
-    public void SelectClearLandHoe()
-    {
-	    Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
-	    Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
+			currentSpawnObject = GameObject.Find("House");
+			Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
+			selectedBuilding = Instantiate(currentSpawnObject);
+			Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
+			// selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+			selectedBuilding.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+		}
+	}
 
-	    if(selectedBuilding != null)
-	    {
-		    Destroy(selectedBuilding);
-	    }
+	public void SelectClearLandHoe()
+	{
+		Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
+		Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
 
-	    if(currentSpawnObject == null || currentSpawnObject.name != "GardenRows_Ground")
-	    {
+		if (selectedBuilding != null)
+		{
+			Destroy(selectedBuilding);
+		}
 
-		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+		if (currentSpawnObject == null || currentSpawnObject.name != "GardenRows_Ground")
+		{
 
-		    currentSpawnObject = GameObject.Find("GardenRows_Ground");
-		    Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
-		    selectedBuilding = Instantiate(currentSpawnObject);
-		    Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
-		    // selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
-		    selectedBuilding.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
-	    }
-    }
+			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+
+			currentSpawnObject = GameObject.Find("Field");
+			Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
+			selectedBuilding = Instantiate(currentSpawnObject);
+			Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
+			// selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+			selectedBuilding.GetComponent<BoxCollider>().enabled = false;
+		}
+	}
 
 
-    public void SelectPlantSeed()
-    {
-	    if(currentSpawnObject == null || currentSpawnObject.name != "Tomato")
-	    {
-		    if(selectedBuilding != null)
-		    {
-			    Destroy(selectedBuilding);
-		    }
-		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+	public void SelectPlantSeed()
+	{
+		if (currentSpawnObject == null || currentSpawnObject.name != "Tomato")
+		{
+			if (selectedBuilding != null)
+			{
+				Destroy(selectedBuilding);
+			}
+			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
-		    currentSpawnObject = GameObject.Find("Tomato");
-		    Debug.Log(currentSpawnObject);
-		    selectedBuilding = Instantiate(currentSpawnObject);
-		    Debug.Log(selectedBuilding);
-		    selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+			currentSpawnObject = GameObject.Find("Tomato");
+			Debug.Log(currentSpawnObject);
+			selectedBuilding = Instantiate(currentSpawnObject);
+			Debug.Log(selectedBuilding);
+			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 
-	    }
-    }
+		}
+	}
 
-    public void SelectEquilateralTriangleTool()
-    {
-	    if(currentSpawnObject == null || currentSpawnObject.name != "EquilateralTriangleTool")
-	    {
-		    if(selectedBuilding != null)
-		    {
-			    Destroy(selectedBuilding);
-		    }
-		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+	public void SelectEquilateralTriangleTool()
+	{
+		if (currentSpawnObject == null || currentSpawnObject.name != "EquilateralTriangleTool")
+		{
+			if (selectedBuilding != null)
+			{
+				Destroy(selectedBuilding);
+			}
+			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
-		    currentSpawnObject = GameObject.Find("EquilateralTriangleTool");
-		    Debug.Log(currentSpawnObject);
-		    selectedBuilding = Instantiate(currentSpawnObject);
-		    Debug.Log(selectedBuilding);
-		    selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+			currentSpawnObject = GameObject.Find("EquilateralTriangleTool");
+			Debug.Log(currentSpawnObject);
+			selectedBuilding = Instantiate(currentSpawnObject);
+			Debug.Log(selectedBuilding);
+			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 
-	    }
-    }
+		}
+	}
 
-    public void SelectIsoscelesTriangleTool()
-    {
-	    if(currentSpawnObject == null || currentSpawnObject.name != "IsoscelesTriangleTool")
-	    {
-		    if(selectedBuilding != null)
-		    {
-			    Destroy(selectedBuilding);
-		    }
-		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+	public void SelectIsoscelesTriangleTool()
+	{
+		if (currentSpawnObject == null || currentSpawnObject.name != "IsoscelesTriangleTool")
+		{
+			if (selectedBuilding != null)
+			{
+				Destroy(selectedBuilding);
+			}
+			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
-		    currentSpawnObject = GameObject.Find("IsoscelesTriangleTool");
-		    Debug.Log(currentSpawnObject);
-		    selectedBuilding = Instantiate(currentSpawnObject);
-		    Debug.Log(selectedBuilding);
-		    selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+			currentSpawnObject = GameObject.Find("IsoscelesTriangleTool");
+			Debug.Log(currentSpawnObject);
+			selectedBuilding = Instantiate(currentSpawnObject);
+			Debug.Log(selectedBuilding);
+			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 
-	    }
-    }
+		}
+	}
 
-    public void SelectRectangleTool()
-    {
-	    if(currentSpawnObject == null || currentSpawnObject.name != "RectangleTool")
-	    {
-		    if(selectedBuilding != null)
-		    {
-			    Destroy(selectedBuilding);
-		    }
-		    // Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
+	public void SelectRectangleTool()
+	{
+		if (currentSpawnObject == null || currentSpawnObject.name != "RectangleTool")
+		{
+			if (selectedBuilding != null)
+			{
+				Destroy(selectedBuilding);
+			}
+			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
-		    currentSpawnObject = GameObject.Find("RectangleTool");
-		    Debug.Log(currentSpawnObject);
-		    selectedBuilding = Instantiate(currentSpawnObject);
-		    Debug.Log(selectedBuilding);
-		    selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
+			currentSpawnObject = GameObject.Find("RectangleTool");
+			Debug.Log(currentSpawnObject);
+			selectedBuilding = Instantiate(currentSpawnObject);
+			Debug.Log(selectedBuilding);
+			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 
-	    }
-    }
+		}
+	}
 
-    public void SelectFormulasToolkitPanel()
-    {
-	    if(formulasToolkitPanelIsActive == true)
-	    {
-		    FormulasToolkitPanel.SetActive(false);
-		    formulasToolkitPanelIsActive = false;
-	    }
+	public void SelectFormulasToolkitPanel()
+	{
+		if (formulasToolkitPanelIsActive == true)
+		{
+			FormulasToolkitPanel.SetActive(false);
+			formulasToolkitPanelIsActive = false;
+		}
 
-	    else if(formulasToolkitPanelIsActive == false)
-	    {
-		    FormulasToolkitPanel.SetActive(true);
-		    formulasToolkitPanelIsActive = true;
+		else if (formulasToolkitPanelIsActive == false)
+		{
+			FormulasToolkitPanel.SetActive(true);
+			formulasToolkitPanelIsActive = true;
 
-		    BuildingsPanel.SetActive(false);
-		    buildingsPanelIsActive = false;
-	    }
+			BuildingsPanel.SetActive(false);
+			buildingsPanelIsActive = false;
+		}
 
-    }
+	}
 
-    public void SelectBuildingsPanel()
-    {
-	    if(buildingsPanelIsActive == true)
-	    {
-		    BuildingsPanel.SetActive(false);
-		    buildingsPanelIsActive = false;
-	    }
+	public void SelectBuildingsPanel()
+	{
+		if (buildingsPanelIsActive == true)
+		{
+			BuildingsPanel.SetActive(false);
+			buildingsPanelIsActive = false;
+		}
 
-	    else if(buildingsPanelIsActive == false)
-	    {
-		    BuildingsPanel.SetActive(true);
-		    buildingsPanelIsActive = true;
+		else if (buildingsPanelIsActive == false)
+		{
+			BuildingsPanel.SetActive(true);
+			buildingsPanelIsActive = true;
 
-		    FormulasToolkitPanel.SetActive(false);
-		    formulasToolkitPanelIsActive = false;
-	    }
+			FormulasToolkitPanel.SetActive(false);
+			formulasToolkitPanelIsActive = false;
+		}
 
-    }
+	}
 }
 
 
