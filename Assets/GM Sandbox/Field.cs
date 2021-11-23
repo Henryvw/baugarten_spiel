@@ -10,7 +10,8 @@ public class Field : MonoBehaviour
 	[Tooltip("in seconds")]
 	[SerializeField] private float timeToGrow = 10f;
 
-	private bool hasCrops = false;
+	[HideInInspector]
+	public bool hasCrops = false;
 	private float playbackTime = 0f;
 
 	private List<GameObject> currentCrops = new List<GameObject>();
@@ -65,7 +66,7 @@ public class Field : MonoBehaviour
 
 	// In building script: detect if Raycast is colliding with object tagged "field", if yes, on click call PlantField()
 	// currently called by Player Cursor as a separate click detection
-	public void PlantField()
+	public void PlantField(int seedCount)
 	{
 		if (hasCrops)
 		{
@@ -73,7 +74,7 @@ public class Field : MonoBehaviour
 			return;
 		}
 
-		Debug.Log(gameObject.name + " has been planted!");
+		Debug.Log(gameObject.name + " has been planted with + " + seedCount + " seeds.");
 
 		CreateCrops();
 	}

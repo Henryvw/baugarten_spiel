@@ -20,6 +20,9 @@ public class MousePointer : MonoBehaviour
 	public GameObject BuildingsPanel;
 	public bool buildingsPanelIsActive;
 
+	public GameObject SeedsPanel;
+	public bool seedsPanelIsActve;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -28,6 +31,9 @@ public class MousePointer : MonoBehaviour
 
 		BuildingsPanel.SetActive(false);
 		buildingsPanelIsActive = false;
+
+		SeedsPanel.SetActive(false);
+		seedsPanelIsActve = false;
 	}
 
 	// Update is called once per frame
@@ -47,26 +53,7 @@ public class MousePointer : MonoBehaviour
 			//			Debug.Log("Moving LEFT: mousePositionX =" + Input.mousePosition.x);
 			if (selectedBuilding != null)
 			{
-				if (EconomyManager.Instance.totalMoney >= 100)
-				{
-					tmpObject = Instantiate(selectedBuilding);
-					tmpObject.transform.position = hit.point;
-
-					Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
-					tmpObject.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), tmpObject.transform.rotation);
-					tmpObject.GetComponent<MeshRenderer>().material.color = Color.white;
-
-					// Reenables the collider on the field so that it's "plantable"
-					if (tmpObject.GetComponent<BoxCollider>() != null)
-					{
-						tmpObject.GetComponent<BoxCollider>().enabled = true;
-					}
-
-					EconomyManager.Instance.totalMoney -= 100;
-					Debug.Log("Left button clicked second time");
-					selectedBuilding = null;
-
-				}
+				HandleBuildingCreation();
 			}
 		}
 		else if (Input.GetMouseButtonDown(1))
@@ -90,6 +77,32 @@ public class MousePointer : MonoBehaviour
 			}
 		}
 	}
+
+	// BUG: Farm Stays Green after built
+	// BUG: Field is not Green before being built
+	private void HandleBuildingCreation()
+	{
+		if (EconomyManager.Instance.totalMoney >= 100)
+		{
+			tmpObject = Instantiate(selectedBuilding);
+			tmpObject.transform.position = hit.point;
+
+			Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
+			tmpObject.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), tmpObject.transform.rotation);
+			tmpObject.GetComponent<MeshRenderer>().material.color = Color.white;
+
+			// Reenables the collider on the field so that it's "plantable"
+			if (tmpObject.GetComponent<BoxCollider>() != null)
+			{
+				tmpObject.GetComponent<BoxCollider>().enabled = true;
+			}
+
+			EconomyManager.Instance.totalMoney -= 100;
+			Debug.Log("Left button clicked second time");
+			selectedBuilding = null;
+		}
+	}
+
 	public void SelectHouse()
 	{
 		Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
@@ -139,24 +152,11 @@ public class MousePointer : MonoBehaviour
 		}
 	}
 
-
 	public void SelectPlantSeed()
 	{
-		if (currentSpawnObject == null || currentSpawnObject.name != "Tomato")
-		{
-			if (selectedBuilding != null)
-			{
-				Destroy(selectedBuilding);
-			}
-			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
-
-			currentSpawnObject = GameObject.Find("Tomato");
-			Debug.Log(currentSpawnObject);
-			selectedBuilding = Instantiate(currentSpawnObject);
-			Debug.Log(selectedBuilding);
-			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
-
-		}
+		// Set Cursor to Plant Icon
+		// If Hover Field, Change Icon to full color
+		// Else, keep Icon greyed out / with a red cross
 	}
 
 	public void SelectEquilateralTriangleTool()
@@ -231,6 +231,9 @@ public class MousePointer : MonoBehaviour
 
 			BuildingsPanel.SetActive(false);
 			buildingsPanelIsActive = false;
+
+			SeedsPanel.SetActive(false);
+			seedsPanelIsActve = false;
 		}
 
 	}
@@ -250,8 +253,31 @@ public class MousePointer : MonoBehaviour
 
 			FormulasToolkitPanel.SetActive(false);
 			formulasToolkitPanelIsActive = false;
+
+			SeedsPanel.SetActive(false);
+			seedsPanelIsActve = false;
+		}
+	}
+
+	public void SelectSeedsPanel()
+	{
+		if (seedsPanelIsActve == true)
+		{
+			SeedsPanel.SetActive(false);
+			seedsPanelIsActve = false;
 		}
 
+		else if (seedsPanelIsActve == false)
+		{
+			SeedsPanel.SetActive(true);
+			seedsPanelIsActve = true;
+
+			FormulasToolkitPanel.SetActive(false);
+			formulasToolkitPanelIsActive = false;
+
+			BuildingsPanel.SetActive(false);
+			buildingsPanelIsActive = false;
+		}
 	}
 }
 
