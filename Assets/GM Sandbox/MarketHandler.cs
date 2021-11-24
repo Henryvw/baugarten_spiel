@@ -26,8 +26,8 @@ public class MarketHandler : MonoBehaviour
 
 	public void UpdateCostDisplay()
 	{
-		int seedCount = (int)seedsSlider.value;
-		int totalCost = fixedCost + perSeedCost * seedCount;
+		seedCount = (int)seedsSlider.value;
+		totalCost = fixedCost + perSeedCost * seedCount;
 		fixedCostText.SetTextToFloat(fixedCost);
 		seedCostText.SetTextToFloat(perSeedCost * seedCount);
 		totalCostText.SetTextToFloat(totalCost);
@@ -46,11 +46,10 @@ public class MarketHandler : MonoBehaviour
 
 	public void PurchaseSeeds()
 	{
-		if (currentField == null) { Debug.LogError("No target field set for Market"); }
+		if (currentField == null) { Debug.LogError("No target field set for Market"); return; }
 
 		if (EconomyManager.Instance.totalMoney >= totalCost)
 		{
-			Debug.Log(EconomyManager.Instance.totalMoney);
 			EconomyManager.Instance.totalMoney -= totalCost;
 			currentField.PlantField(seedCount);
 			currentField = null;
