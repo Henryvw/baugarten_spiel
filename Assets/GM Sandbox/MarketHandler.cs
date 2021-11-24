@@ -33,15 +33,16 @@ public class MarketHandler : MonoBehaviour
 		totalCostText.SetTextToFloat(totalCost);
 	}
 
-	public void StartSeedPurchaseForField(Field field)
+	public void OpenPanel(Field field)
 	{
 		currentField = field;
-		ToggleMarketPanel();
+		marketPanel.SetActive(true);
 	}
 
-	public void ToggleMarketPanel()
+	public void ClosePanel()
 	{
-		marketPanel.SetActive(!marketPanel.activeSelf);
+		currentField = null;
+		marketPanel.SetActive(false);
 	}
 
 	public void PurchaseSeeds()
@@ -52,8 +53,7 @@ public class MarketHandler : MonoBehaviour
 		{
 			EconomyManager.Instance.totalMoney -= totalCost;
 			currentField.PlantField(seedCount);
-			currentField = null;
-			ToggleMarketPanel();
+			ClosePanel();
 		}
 		else
 		{

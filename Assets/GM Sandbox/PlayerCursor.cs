@@ -10,13 +10,16 @@ public class PlayerCursor : MonoBehaviour
 		public Vector2 hotspot;
 	}
 
-	[SerializeField] CursorMapping[] cursorMappings = null;
+	[SerializeField] private CursorMapping[] cursorMappings = null;
 
+	private bool canInteractWithField = false;
 	private GameObject currentTarget;
 
 	private void Update()
 	{
-		if (InteractWithField()) { return; }
+		if (Input.GetMouseButtonDown(1)) { canInteractWithField = false; }
+
+		if (canInteractWithField && InteractWithField()) { return; }
 
 		SetCursor(CursorType.None);
 	}
@@ -47,7 +50,8 @@ public class PlayerCursor : MonoBehaviour
 				SetCursor(CursorType.PlantableField);
 				if (Input.GetMouseButtonDown(0))
 				{
-					FindObjectOfType<MarketHandler>().StartSeedPurchaseForField(field);
+					FindObjectOfType<MarketHandler>().OpenPanel(field);
+					canInteractWithField = false;
 				}
 			}
 			else
@@ -78,5 +82,10 @@ public class PlayerCursor : MonoBehaviour
 			}
 		}
 		return cursorMappings[0];
+	}
+
+	public void ToggleFieldInteraction(bool value)
+	{
+		canInteractWithField = value;
 	}
 }

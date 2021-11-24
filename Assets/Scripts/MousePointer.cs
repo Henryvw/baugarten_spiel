@@ -152,13 +152,6 @@ public class MousePointer : MonoBehaviour
 		}
 	}
 
-	public void SelectPlantSeed()
-	{
-		// Set Cursor to Plant Icon
-		// If Hover Field, Change Icon to full color
-		// Else, keep Icon greyed out / with a red cross
-	}
-
 	public void SelectEquilateralTriangleTool()
 	{
 		if (currentSpawnObject == null || currentSpawnObject.name != "EquilateralTriangleTool")

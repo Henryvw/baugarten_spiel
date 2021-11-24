@@ -1705,7 +1705,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519389508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 106.76}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 52066734}
   m_HandleRect: {fileID: 198985198}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 1
   m_MaxValue: 999
   m_WholeNumbers: 1
   m_Value: 999
@@ -3144,9 +3144,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 376090589}
-        m_TargetAssemblyTypeName: MarketHandler, Assembly-CSharp
-        m_MethodName: ToggleMarketPanel
+      - m_Target: {fileID: 1107275705}
+        m_TargetAssemblyTypeName: PlayerCursor, Assembly-CSharp
+        m_MethodName: ToggleFieldInteraction
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1202465546}
+        m_TargetAssemblyTypeName: MousePointer, Assembly-CSharp
+        m_MethodName: SelectSeedsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3154,7 +3166,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!224 &1137971294323333373
 RectTransform:
