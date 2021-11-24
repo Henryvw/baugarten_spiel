@@ -12,19 +12,28 @@ public class PlayerCursor : MonoBehaviour
 
 	[SerializeField] private CursorMapping[] cursorMappings = null;
 
-	private bool canInteractWithField = false;
+	private bool canInteractWithSeed = false;
+	private bool canInteractWithHarvest = false;
 	private GameObject currentTarget;
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(1)) { canInteractWithField = false; }
+		if (Input.GetMouseButtonDown(1)) { ResetToggles(); }
 
-		if (canInteractWithField && InteractWithField()) { return; }
+		if (canInteractWithSeed && InteractWithSeed()) { return; }
+
+		if (canInteractWithHarvest && InteractWithHarvest()) { return; }
 
 		SetCursor(CursorType.None);
 	}
 
-	private bool InteractWithField()
+	private void ResetToggles()
+	{
+		canInteractWithSeed = false;
+		canInteractWithHarvest = false;
+	}
+
+	private bool InteractWithSeed()
 	{
 		GameObject target;
 		RaycastHit hit;
@@ -33,14 +42,30 @@ public class PlayerCursor : MonoBehaviour
 		{
 			target = hit.collider.gameObject;
 			currentTarget = target;
-			HandleInteractionType();
+			HandleSeedInteraction();
 			return true;
 		}
 		currentTarget = null;
 		return false;
 	}
 
-	private void HandleInteractionType()
+	private bool InteractWithHarvest()
+	{
+		GameObject target;
+		RaycastHit hit;
+		bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+		if (hasHit && hit.collider.gameObject.tag == "Field")
+		{
+			target = hit.collider.gameObject;
+			currentTarget = target;
+			HandleHarvestInteraction();
+			return true;
+		}
+		currentTarget = null;
+		return false;
+	}
+
+	private void HandleSeedInteraction()
 	{
 		if (currentTarget.tag == "Field")
 		{
@@ -51,12 +76,33 @@ public class PlayerCursor : MonoBehaviour
 				if (Input.GetMouseButtonDown(0))
 				{
 					FindObjectOfType<MarketHandler>().OpenPanel(field);
-					canInteractWithField = false;
+					canInteractWithSeed = false;
 				}
 			}
 			else
 			{
-				SetCursor(CursorType.NotPlantable);
+				SetCursor(CursorType.NotInteractable);
+			}
+		}
+	}
+
+	private void HandleHarvestInteraction()
+	{
+		if (currentTarget.tag == "Field")
+		{
+			Field field = currentTarget.GetComponent<Field>();
+			if (field.hasCrops)
+			{
+				SetCursor(CursorType.HarvestableField);
+				if (Input.GetMouseButtonDown(0))
+				{
+					field.HarvestField();
+					canInteractWithHarvest = false;
+				}
+			}
+			else
+			{
+				SetCursor(CursorType.NotInteractable);
 			}
 		}
 	}
@@ -84,8 +130,13 @@ public class PlayerCursor : MonoBehaviour
 		return cursorMappings[0];
 	}
 
-	public void ToggleFieldInteraction(bool value)
+	public void ToggleSeedInteraction(bool value)
 	{
-		canInteractWithField = value;
+		canInteractWithSeed = value;
+	}
+
+	public void ToggleHarvestInteraction(bool value)
+	{
+		canInteractWithHarvest = value;
 	}
 }

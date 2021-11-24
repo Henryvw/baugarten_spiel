@@ -2,5 +2,6 @@ public enum CursorType
 {
 	None,
 	PlantableField,
-	NotPlantable
+	NotInteractable,
+	HarvestableField
 }

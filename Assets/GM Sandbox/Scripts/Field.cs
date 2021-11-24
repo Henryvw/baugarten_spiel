@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Field : MonoBehaviour
 {
+	[SerializeField] private int cropPrice = 10;
 	[SerializeField] private GameObject testPlant = default;
 	[SerializeField] private GameObject[] modelPrefabs = default;
 
@@ -13,6 +14,7 @@ public class Field : MonoBehaviour
 	[HideInInspector]
 	public bool hasCrops = false;
 	private float playbackTime = 0f;
+	private int numberOfCrops = 0;
 
 	private List<GameObject> currentCrops = new List<GameObject>();
 
@@ -74,9 +76,31 @@ public class Field : MonoBehaviour
 			return;
 		}
 
-		Debug.Log(gameObject.name + " has been planted with + " + seedCount + " seeds.");
+		Debug.Log(gameObject.name + " has been planted with " + seedCount + " seeds.");
+		numberOfCrops = seedCount;
 
 		CreateCrops();
+	}
+
+	public void HarvestField()
+	{
+		Debug.Log(gameObject.name + " has been harvested, yielding " + numberOfCrops + " crops!");
+		EconomyManager.Instance.totalMoney += cropPrice * numberOfCrops;
+
+		DestroyCurrentCrops();
+
+		playbackTime = 0f;
+		numberOfCrops = 0;
+		hasCrops = false;
+	}
+
+	private void DestroyCurrentCrops()
+	{
+		foreach (GameObject crop in currentCrops)
+		{
+			Destroy(crop);
+		}
+		currentCrops.Clear();
 	}
 
 	private void CreateCrops()
