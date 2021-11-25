@@ -8,8 +8,7 @@ public class FormulaHandler : MonoBehaviour
 
 	[Header("Object References")]
 	[SerializeField] private GameObject formulaPanel = default;
-	[SerializeField] private TextDisplay fixedFormulaText = default;
-	[SerializeField] private TextDisplay variableFormulaText = default;
+	[SerializeField] private TextDisplay lengthText = default;
 	[SerializeField] private TextDisplay totalAreaText = default;
 
 	private Field currentField;
@@ -21,8 +20,9 @@ public class FormulaHandler : MonoBehaviour
 		UpdateFormulaDisplay();
 	}
 
-	public void UpdateFormulaDisplay()
+	private void UpdateFormulaDisplay()
 	{
+		lengthText.SetTextToFloat(sideLength);
 		totalArea = (int)Mathf.Round((Mathf.Sqrt(3) / 4) * sideLength * sideLength);
 		totalAreaText.SetTextToFloat(totalArea);
 	}
@@ -31,6 +31,7 @@ public class FormulaHandler : MonoBehaviour
 	{
 		currentField = field;
 		formulaPanel.SetActive(true);
+		UpdateFormulaDisplay();
 	}
 
 	public void ClosePanel()
