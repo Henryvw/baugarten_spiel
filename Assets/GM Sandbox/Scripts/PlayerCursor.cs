@@ -110,6 +110,7 @@ public class PlayerCursor : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
+			FindObjectOfType<FormulaHandler>().OpenPanel(field);
 			canInteractWithFormula = false;
 		}
 		return true;
