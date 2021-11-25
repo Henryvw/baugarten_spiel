@@ -99479,10 +99479,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1202465546}
-    - target: {fileID: 1694751158252641063, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 697310751}
     - target: {fileID: 1694751158632957263, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -99491,18 +99487,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1202465546}
-    - target: {fileID: 1751361423485300057, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 697310751}
     - target: {fileID: 1751361423492067991, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1202465546}
-    - target: {fileID: 1751361423540802512, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 697310751}
     - target: {fileID: 1751361423710917990, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -99595,10 +99583,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1202465546}
-    - target: {fileID: 1751361425342112316, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 697310751}
     - target: {fileID: 1751361425568591936, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

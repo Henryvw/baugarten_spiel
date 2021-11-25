@@ -1302,7 +1302,6 @@ GameObject:
   - component: {fileID: 1694751158252641061}
   - component: {fileID: 1694751158252641060}
   - component: {fileID: 1694751158252641051}
-  - component: {fileID: 1694751158252641063}
   m_Layer: 5
   m_Name: SeedsPanel
   m_TagString: Untagged
@@ -1392,27 +1391,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1694751158252641063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694751158252641050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 109ae844ebd234087aaa933ca1f8918b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  selectedBuilding: {fileID: 0}
-  currentSpawnObject: {fileID: 0}
-  FormulasToolkitPanel: {fileID: 0}
-  formulasToolkitPanelIsActive: 0
-  BuildingsPanel: {fileID: 0}
-  buildingsPanelIsActive: 0
-  SeedsPanel: {fileID: 1694751158252641050}
-  seedsPanelIsActve: 0
 --- !u!1 &1694751158632957261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4150,7 +4128,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1782400217398483862, guid: c03f7589176e6494489ab5f1e137b094, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c03f7589176e6494489ab5f1e137b094, type: 3}
 --- !u!224 &1751361423540802513 stripped
 RectTransform:
@@ -4786,7 +4765,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 341
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2548023888706222689, guid: 15dc63da2c8144fa68145bf1b2a0fc27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 15dc63da2c8144fa68145bf1b2a0fc27, type: 3}
 --- !u!224 &1751361425342112317 stripped
 RectTransform:
@@ -5010,7 +4990,8 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8277007139612908206, guid: 4c84b9ec9916e48edb789b19ff61c1d7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4c84b9ec9916e48edb789b19ff61c1d7, type: 3}
 --- !u!224 &1751361423485300061 stripped
 RectTransform:
