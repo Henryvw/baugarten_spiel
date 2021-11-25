@@ -91,7 +91,7 @@ public class PlayerCursor : MonoBehaviour
 		if (currentTarget.tag == "Field")
 		{
 			Field field = currentTarget.GetComponent<Field>();
-			if (field.hasCrops)
+			if (field.hasCrops && field.cropsFullyGrown)
 			{
 				SetCursor(CursorType.HarvestableField);
 				if (Input.GetMouseButtonDown(0))

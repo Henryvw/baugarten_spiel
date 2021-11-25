@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 202862668813465357}
   - component: {fileID: 202862668813465356}
+  - component: {fileID: 7445947680548976598}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -27,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.066573, y: 4.7907667, z: -2.1223555}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,3 +52,30 @@ MonoBehaviour:
   formulasToolkitPanelIsActive: 0
   BuildingsPanel: {fileID: 0}
   buildingsPanelIsActive: 0
+  SeedsPanel: {fileID: 0}
+  seedsPanelIsActve: 0
+--- !u!114 &7445947680548976598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202862668813465359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69204b5ec0ef8440b502370df16e544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorMappings:
+  - type: 0
+    texture: {fileID: 0}
+    hotspot: {x: 0, y: 0}
+  - type: 1
+    texture: {fileID: 2800000, guid: 45e97358c6852544bbfa60ea38b1b520, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 2
+    texture: {fileID: 2800000, guid: 21d56c092944f92419a7e8c53390a810, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 3
+    texture: {fileID: 2800000, guid: 06f4c148b27c3f04299cae255ceb9c6e, type: 3}
+    hotspot: {x: 0, y: 0}

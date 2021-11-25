@@ -13,6 +13,8 @@ public class Field : MonoBehaviour
 
 	[HideInInspector]
 	public bool hasCrops = false;
+	[HideInInspector]
+	public bool cropsFullyGrown = false;
 	private float playbackTime = 0f;
 	private int numberOfCrops = 0;
 
@@ -41,6 +43,11 @@ public class Field : MonoBehaviour
 			{
 				crop.GetComponent<Animator>().SetFloat("Grow", playbackTime / timeToGrow);
 			}
+		}
+
+		if (playbackTime >= timeToGrow)
+		{
+			cropsFullyGrown = true;
 		}
 	}
 
@@ -84,6 +91,12 @@ public class Field : MonoBehaviour
 
 	public void HarvestField()
 	{
+		if (!cropsFullyGrown)
+		{
+			Debug.Log("Can't harvest " + gameObject.name + " as crops are not grown.");
+			return;
+		}
+
 		Debug.Log(gameObject.name + " has been harvested, yielding " + numberOfCrops + " crops!");
 		EconomyManager.Instance.totalMoney += cropPrice * numberOfCrops;
 
@@ -91,6 +104,7 @@ public class Field : MonoBehaviour
 
 		playbackTime = 0f;
 		numberOfCrops = 0;
+		cropsFullyGrown = false;
 		hasCrops = false;
 	}
 
