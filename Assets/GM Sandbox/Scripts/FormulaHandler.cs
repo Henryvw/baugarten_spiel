@@ -11,22 +11,22 @@ public class FormulaHandler : MonoBehaviour
 
 	[Header("Equilateral Parameters")]
 	[SerializeField] private GameObject equilateralPanel = default;
-	[SerializeField] private int sideLength = 1;
 	[SerializeField] private TextDisplay sideText = default;
+	private int sideLength;
 
 	[Header("Isosceles Parameters")]
 	[SerializeField] private GameObject isoscelesPanel = default;
-	[SerializeField] private int baseLength = 1;
 	[SerializeField] private TextDisplay baseText = default;
-	[SerializeField] private int heightLength = 1;
 	[SerializeField] private TextDisplay heightText = default;
+	private int baseLength;
+	private int heightLength;
 
 	[Header("Rectangle Parameters")]
 	[SerializeField] private GameObject rectanglePanel = default;
-	[SerializeField] private int widthLength = 1;
 	[SerializeField] private TextDisplay widthText = default;
-	[SerializeField] private int rectangleLength = 1;
 	[SerializeField] private TextDisplay lengthText = default;
+	private int widthLength;
+	private int rectangleLength;
 
 	private Field currentField;
 	private int totalArea;
@@ -34,14 +34,44 @@ public class FormulaHandler : MonoBehaviour
 	private void Start()
 	{
 		formulaPanel.SetActive(false);
-		UpdateFormulaDisplay();
+		UpdateTextDisplay();
 	}
 
-	private void UpdateFormulaDisplay()
+	private void UpdateTextDisplay()
 	{
+		SetFieldParameters();
 		sideText.SetTextToFloat(sideLength);
-		totalArea = (int)Mathf.Round((Mathf.Sqrt(3) / 4) * sideLength * sideLength);
-		totalAreaText.SetTextToFloat(totalArea);
+		heightText.SetTextToFloat(heightLength);
+		baseText.SetTextToFloat(baseLength);
+		widthText.SetTextToFloat(widthLength);
+		lengthText.SetTextToFloat(rectangleLength);
+	}
+
+	private void SetFieldParameters()
+	{
+		sideLength = currentField.GetSelectedPreset().sideLength;
+		heightLength = currentField.GetSelectedPreset().heightLength;
+		baseLength = currentField.GetSelectedPreset().baseLength;
+		widthLength = currentField.GetSelectedPreset().widthLength;
+		rectangleLength = currentField.GetSelectedPreset().rectangleLength;
+	}
+
+	private int GetEquilateralArea()
+	{
+		int area = (int)Mathf.Round((Mathf.Sqrt(3) / 4) * sideLength * sideLength);
+		return area;
+	}
+
+	private int GetIsoscelesArea()
+	{
+		int area = (int)Mathf.Round((heightLength * baseLength) / 2);
+		return area;
+	}
+
+	private int GetRectangleArea()
+	{
+		int area = (int)Mathf.Round(widthLength * rectangleLength);
+		return area;
 	}
 
 	public void OpenPanel(Field field)
@@ -65,7 +95,10 @@ public class FormulaHandler : MonoBehaviour
 		rectanglePanel.SetActive(false);
 		backButton.SetActive(true);
 		totalAreaText.transform.parent.gameObject.SetActive(true);
-		UpdateFormulaDisplay();
+
+		UpdateTextDisplay();
+		totalArea = GetEquilateralArea();
+		totalAreaText.SetTextToFloat(totalArea);
 	}
 
 	public void ToggleIsoscelesPanel()
@@ -76,7 +109,10 @@ public class FormulaHandler : MonoBehaviour
 		rectanglePanel.SetActive(false);
 		backButton.SetActive(true);
 		totalAreaText.transform.parent.gameObject.SetActive(true);
-		UpdateFormulaDisplay();
+
+		UpdateTextDisplay();
+		totalArea = GetIsoscelesArea();
+		totalAreaText.SetTextToFloat(totalArea);
 	}
 
 	public void ToggleRectanglePanel()
@@ -87,7 +123,10 @@ public class FormulaHandler : MonoBehaviour
 		rectanglePanel.SetActive(true);
 		backButton.SetActive(true);
 		totalAreaText.transform.parent.gameObject.SetActive(true);
-		UpdateFormulaDisplay();
+
+		UpdateTextDisplay();
+		totalArea = GetRectangleArea();
+		totalAreaText.SetTextToFloat(totalArea);
 	}
 
 	public void ToggleSelectionPanel()

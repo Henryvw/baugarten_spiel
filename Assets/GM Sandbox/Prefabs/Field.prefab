@@ -59,6 +59,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16ea7f62c5c5a0458ca846aa6af7a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  presets:
+  - {fileID: 11400000, guid: 5f0bd98680b7acd4e8a7873186123acf, type: 2}
+  - {fileID: 11400000, guid: 37cd66a927c41fe4a9a5872c716cdd0e, type: 2}
+  - {fileID: 11400000, guid: 48e2b895bccb3a842ad0131d1c6dcff2, type: 2}
   cropPrice: 2
   testPlant: {fileID: 8702042520613297083, guid: 7252826a505022f49a208098e2f3054b, type: 3}
   modelPrefabs:

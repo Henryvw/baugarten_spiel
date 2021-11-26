@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 public class Field : MonoBehaviour
 {
+
+	[SerializeField] private FieldData[] presets = default;
 	[SerializeField] private int cropPrice = 10;
 	[SerializeField] private GameObject testPlant = default;
-	[SerializeField] private GameObject[] modelPrefabs = default;
 
 	[Range(1f, 60f)]
 	[Tooltip("in seconds")]
@@ -19,6 +20,7 @@ public class Field : MonoBehaviour
 	private int numberOfCrops = 0;
 
 	private List<GameObject> currentCrops = new List<GameObject>();
+	private FieldData selectedPreset;
 
 	private void Start()
 	{
@@ -68,8 +70,9 @@ public class Field : MonoBehaviour
 
 	private GameObject GetRandomFieldPrefab()
 	{
-		int randomIndex = Random.Range(0, modelPrefabs.Length);
-		GameObject selectedPrefab = modelPrefabs[randomIndex];
+		int randomIndex = Random.Range(0, presets.Length);
+		selectedPreset = presets[randomIndex];
+		GameObject selectedPrefab = selectedPreset.modelPrefab;
 		return selectedPrefab;
 	}
 
@@ -135,5 +138,10 @@ public class Field : MonoBehaviour
 	private GameObject GetPlantPrefab()
 	{
 		return testPlant;
+	}
+
+	public FieldData GetSelectedPreset()
+	{
+		return selectedPreset;
 	}
 }
