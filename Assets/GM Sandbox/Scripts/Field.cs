@@ -3,8 +3,53 @@ using System.Collections.Generic;
 
 public class Field : MonoBehaviour
 {
+	[System.Serializable]
+	public class FieldPreset
+	{
+		public GameObject modelPrefab;
+		public AreaType areaType;
+		private int sideLengthHeight;
+		private int baseWidth;
 
-	[SerializeField] private FieldData[] presets = default;
+		public void Init()
+		{
+			sideLengthHeight = GetRandom1to32();
+			baseWidth = GetRandom1to32();
+		}
+
+		private int GetRandom1to32()
+		{
+			return Random.Range(1, 32);
+		}
+
+		public int GetSideLengthHeight()
+		{
+			return sideLengthHeight;
+		}
+
+		public int GetBaseWidth()
+		{
+			return baseWidth;
+		}
+
+		public int GetArea()
+		{
+			switch (areaType)
+			{
+				case AreaType.Equilateral:
+					return AreaFormulas.GetEquilateralArea(sideLengthHeight);
+				case AreaType.Isosceles:
+					return AreaFormulas.GetIsoscelesArea(sideLengthHeight, baseWidth);
+				case AreaType.Rectangle:
+					return AreaFormulas.GetRectangleArea(sideLengthHeight, baseWidth);
+				default:
+					Debug.LogError("Area type not supported.");
+					return 0;
+			}
+		}
+	}
+
+	[SerializeField] private FieldPreset[] presets = default;
 	[SerializeField] private int cropPrice = 10;
 	[SerializeField] private GameObject testPlant = default;
 
@@ -20,7 +65,7 @@ public class Field : MonoBehaviour
 	private int numberOfCrops = 0;
 
 	private List<GameObject> currentCrops = new List<GameObject>();
-	private FieldData selectedPreset;
+	private FieldPreset selectedPreset;
 
 	private void Start()
 	{
@@ -72,6 +117,7 @@ public class Field : MonoBehaviour
 	{
 		int randomIndex = Random.Range(0, presets.Length);
 		selectedPreset = presets[randomIndex];
+		selectedPreset.Init();
 		GameObject selectedPrefab = selectedPreset.modelPrefab;
 		return selectedPrefab;
 	}
@@ -140,7 +186,7 @@ public class Field : MonoBehaviour
 		return testPlant;
 	}
 
-	public FieldData GetSelectedPreset()
+	public FieldPreset GetSelectedPreset()
 	{
 		return selectedPreset;
 	}

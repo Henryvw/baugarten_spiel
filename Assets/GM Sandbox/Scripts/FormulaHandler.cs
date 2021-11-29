@@ -10,72 +10,59 @@ public class FormulaHandler : MonoBehaviour
 	[Header("Equilateral Parameters")]
 	[SerializeField] private GameObject equilateralPanel = default;
 	[SerializeField] private TextDisplay sideText = default;
-	private int sideLength;
 
 	[Header("Isosceles Parameters")]
 	[SerializeField] private GameObject isoscelesPanel = default;
 	[SerializeField] private TextDisplay baseText = default;
 	[SerializeField] private TextDisplay heightText = default;
-	private int baseLength;
-	private int heightLength;
 
 	[Header("Rectangle Parameters")]
 	[SerializeField] private GameObject rectanglePanel = default;
 	[SerializeField] private TextDisplay widthText = default;
 	[SerializeField] private TextDisplay lengthText = default;
-	private int widthLength;
-	private int rectangleLength;
 
 	private Field currentField;
+	private AreaType currentAreaType;
 	private int totalArea;
+	private int sideLength;
+	private int baseLength;
 
 	private void Start()
 	{
 		formulaPanel.SetActive(false);
-		UpdateTextDisplay();
 	}
 
 	private void UpdateTextDisplay()
 	{
-		SetFieldParameters();
+		sideLength = currentField.GetSelectedPreset().GetSideLengthHeight();
+		baseLength = currentField.GetSelectedPreset().GetBaseWidth();
+
 		sideText.SetTextToFloat(sideLength);
-		heightText.SetTextToFloat(heightLength);
+		heightText.SetTextToFloat(sideLength);
 		baseText.SetTextToFloat(baseLength);
-		widthText.SetTextToFloat(widthLength);
-		lengthText.SetTextToFloat(rectangleLength);
-	}
-
-	private void SetFieldParameters()
-	{
-		sideLength = currentField.GetSelectedPreset().sideLength;
-		heightLength = currentField.GetSelectedPreset().heightLength;
-		baseLength = currentField.GetSelectedPreset().baseLength;
-		widthLength = currentField.GetSelectedPreset().widthLength;
-		rectangleLength = currentField.GetSelectedPreset().rectangleLength;
-	}
-
-	private int GetEquilateralArea()
-	{
-		int area = (int)Mathf.Round((Mathf.Sqrt(3) / 4) * sideLength * sideLength);
-		return area;
-	}
-
-	private int GetIsoscelesArea()
-	{
-		int area = (int)Mathf.Round((heightLength * baseLength) / 2);
-		return area;
-	}
-
-	private int GetRectangleArea()
-	{
-		int area = (int)Mathf.Round(widthLength * rectangleLength);
-		return area;
+		widthText.SetTextToFloat(baseLength);
+		lengthText.SetTextToFloat(sideLength);
 	}
 
 	public void OpenPanel(Field field)
 	{
 		currentField = field;
 		formulaPanel.SetActive(true);
+		UpdateTextDisplay();
+
+		switch (currentAreaType)
+		{
+			case AreaType.Rectangle:
+				totalArea = AreaFormulas.GetRectangleArea(sideLength, baseLength);
+				break;
+			case AreaType.Equilateral:
+				totalArea = AreaFormulas.GetEquilateralArea(sideLength);
+				break;
+			case AreaType.Isosceles:
+				totalArea = AreaFormulas.GetIsoscelesArea(sideLength, baseLength);
+				break;
+		}
+		totalAreaText.SetTextToFloat(totalArea);
 	}
 
 	public void ClosePanel()
@@ -89,11 +76,7 @@ public class FormulaHandler : MonoBehaviour
 		equilateralPanel.SetActive(true);
 		isoscelesPanel.SetActive(false);
 		rectanglePanel.SetActive(false);
-		totalAreaText.transform.parent.gameObject.SetActive(true);
-
-		UpdateTextDisplay();
-		totalArea = GetEquilateralArea();
-		totalAreaText.SetTextToFloat(totalArea);
+		currentAreaType = AreaType.Equilateral;
 	}
 
 	public void ToggleIsoscelesPanel()
@@ -101,11 +84,7 @@ public class FormulaHandler : MonoBehaviour
 		equilateralPanel.SetActive(false);
 		isoscelesPanel.SetActive(true);
 		rectanglePanel.SetActive(false);
-		totalAreaText.transform.parent.gameObject.SetActive(true);
-
-		UpdateTextDisplay();
-		totalArea = GetIsoscelesArea();
-		totalAreaText.SetTextToFloat(totalArea);
+		currentAreaType = AreaType.Isosceles;
 	}
 
 	public void ToggleRectanglePanel()
@@ -113,10 +92,6 @@ public class FormulaHandler : MonoBehaviour
 		equilateralPanel.SetActive(false);
 		isoscelesPanel.SetActive(false);
 		rectanglePanel.SetActive(true);
-		totalAreaText.transform.parent.gameObject.SetActive(true);
-
-		UpdateTextDisplay();
-		totalArea = GetRectangleArea();
-		totalAreaText.SetTextToFloat(totalArea);
+		currentAreaType = AreaType.Rectangle;
 	}
 }

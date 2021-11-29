@@ -60,15 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   presets:
-  - {fileID: 11400000, guid: 5f0bd98680b7acd4e8a7873186123acf, type: 2}
-  - {fileID: 11400000, guid: 37cd66a927c41fe4a9a5872c716cdd0e, type: 2}
-  - {fileID: 11400000, guid: 48e2b895bccb3a842ad0131d1c6dcff2, type: 2}
+  - modelPrefab: {fileID: 1669526583794973442, guid: bb476b4b85d1ce5419264f0af984ee4d, type: 3}
+    areaType: 0
+  - modelPrefab: {fileID: 2445518481296543062, guid: b09132bb04ea8a240ae402acf844bbbc, type: 3}
+    areaType: 1
+  - modelPrefab: {fileID: 2445518481296543062, guid: 14367501fa871534092e9a7182c34c26, type: 3}
+    areaType: 2
   cropPrice: 2
   testPlant: {fileID: 8702042520613297083, guid: 7252826a505022f49a208098e2f3054b, type: 3}
-  modelPrefabs:
-  - {fileID: 1669526583794973442, guid: bb476b4b85d1ce5419264f0af984ee4d, type: 3}
-  - {fileID: 2445518481296543062, guid: b09132bb04ea8a240ae402acf844bbbc, type: 3}
-  - {fileID: 2445518481296543062, guid: 14367501fa871534092e9a7182c34c26, type: 3}
   timeToGrow: 10
   hasCrops: 0
   cropsFullyGrown: 0
