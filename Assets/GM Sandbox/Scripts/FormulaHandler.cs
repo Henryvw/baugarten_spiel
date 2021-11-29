@@ -5,8 +5,6 @@ public class FormulaHandler : MonoBehaviour
 {
 	[Header("General Parameters")]
 	[SerializeField] private GameObject formulaPanel = default;
-	[SerializeField] private GameObject selectionPanel = default;
-	[SerializeField] private GameObject backButton = default;
 	[SerializeField] private TextDisplay totalAreaText = default;
 
 	[Header("Equilateral Parameters")]
@@ -78,7 +76,6 @@ public class FormulaHandler : MonoBehaviour
 	{
 		currentField = field;
 		formulaPanel.SetActive(true);
-		ToggleSelectionPanel();
 	}
 
 	public void ClosePanel()
@@ -89,11 +86,9 @@ public class FormulaHandler : MonoBehaviour
 
 	public void ToggleEquilateralPanel()
 	{
-		selectionPanel.SetActive(false);
 		equilateralPanel.SetActive(true);
 		isoscelesPanel.SetActive(false);
 		rectanglePanel.SetActive(false);
-		backButton.SetActive(true);
 		totalAreaText.transform.parent.gameObject.SetActive(true);
 
 		UpdateTextDisplay();
@@ -103,11 +98,9 @@ public class FormulaHandler : MonoBehaviour
 
 	public void ToggleIsoscelesPanel()
 	{
-		selectionPanel.SetActive(false);
 		equilateralPanel.SetActive(false);
 		isoscelesPanel.SetActive(true);
 		rectanglePanel.SetActive(false);
-		backButton.SetActive(true);
 		totalAreaText.transform.parent.gameObject.SetActive(true);
 
 		UpdateTextDisplay();
@@ -117,25 +110,13 @@ public class FormulaHandler : MonoBehaviour
 
 	public void ToggleRectanglePanel()
 	{
-		selectionPanel.SetActive(false);
 		equilateralPanel.SetActive(false);
 		isoscelesPanel.SetActive(false);
 		rectanglePanel.SetActive(true);
-		backButton.SetActive(true);
 		totalAreaText.transform.parent.gameObject.SetActive(true);
 
 		UpdateTextDisplay();
 		totalArea = GetRectangleArea();
 		totalAreaText.SetTextToFloat(totalArea);
-	}
-
-	public void ToggleSelectionPanel()
-	{
-		selectionPanel.SetActive(true);
-		equilateralPanel.SetActive(false);
-		isoscelesPanel.SetActive(false);
-		rectanglePanel.SetActive(false);
-		backButton.SetActive(false);
-		totalAreaText.transform.parent.gameObject.SetActive(false);
 	}
 }
