@@ -66,6 +66,8 @@ public class Field : MonoBehaviour
 
 	private List<GameObject> currentCrops = new List<GameObject>();
 	private FieldPreset selectedPreset;
+	private GameObject selectedPlantPrefab;
+	private int maxCrops;
 
 	private void Start()
 	{
@@ -132,8 +134,16 @@ public class Field : MonoBehaviour
 			return;
 		}
 
-		Debug.Log(gameObject.name + " has been planted with " + seedCount + " seeds.");
-		numberOfCrops = seedCount;
+		maxCrops = selectedPreset.GetArea();
+
+		if (seedCount > maxCrops)
+		{
+			numberOfCrops = maxCrops;
+		}
+		else
+		{
+			numberOfCrops = seedCount;
+		}
 
 		CreateCrops();
 	}
@@ -171,14 +181,27 @@ public class Field : MonoBehaviour
 		hasCrops = true;
 
 		SeedPoint[] seedPoints = GetComponentsInChildren<SeedPoint>();
-		GameObject selectedPlantPrefab = GetPlantPrefab();
+		selectedPlantPrefab = GetPlantPrefab();
+
+		int maxPoints = seedPoints.Length;
+		int numberOfPoints = (numberOfCrops * maxPoints) / maxCrops;
+		int seedIndex = 0;
 
 		foreach (SeedPoint seed in seedPoints)
 		{
-			GameObject newPlant = Instantiate(selectedPlantPrefab, seed.transform.position, seed.transform.rotation) as GameObject;
-			newPlant.transform.parent = seed.transform;
-			currentCrops.Add(newPlant);
+			if (seedIndex <= numberOfPoints)
+			{
+				CreateCropAtPoint(seed);
+				seedIndex++;
+			}
 		}
+	}
+
+	private void CreateCropAtPoint(SeedPoint seed)
+	{
+		GameObject newPlant = Instantiate(selectedPlantPrefab, seed.transform.position, seed.transform.rotation) as GameObject;
+		newPlant.transform.parent = seed.transform;
+		currentCrops.Add(newPlant);
 	}
 
 	private GameObject GetPlantPrefab()
