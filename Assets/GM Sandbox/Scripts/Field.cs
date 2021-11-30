@@ -185,14 +185,17 @@ public class Field : MonoBehaviour
 
 		int maxPoints = seedPoints.Length;
 		int numberOfPoints = (numberOfCrops * maxPoints) / maxCrops;
+		int coefficient = maxPoints / numberOfPoints;
 		int seedIndex = 0;
+		int pointIndex = 0;
 
-		foreach (SeedPoint seed in seedPoints)
+		while (seedIndex <= numberOfPoints)
 		{
-			if (seedIndex <= numberOfPoints)
+			while (pointIndex < maxPoints)
 			{
-				CreateCropAtPoint(seed);
+				CreateCropAtPoint(seedPoints[pointIndex]);
 				seedIndex++;
+				pointIndex += coefficient;
 			}
 		}
 	}
