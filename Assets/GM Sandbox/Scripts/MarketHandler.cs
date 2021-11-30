@@ -10,6 +10,7 @@ public class MarketHandler : MonoBehaviour
 	[Header("Object References")]
 	[SerializeField] private GameObject marketPanel = default;
 	[SerializeField] private Slider seedsSlider = default;
+	[SerializeField] private InputField inputField = default;
 	[SerializeField] private TextDisplay fixedCostText = default;
 	[SerializeField] private TextDisplay seedCostText = default;
 	[SerializeField] private TextDisplay totalCostText = default;
@@ -22,6 +23,22 @@ public class MarketHandler : MonoBehaviour
 	{
 		marketPanel.SetActive(false);
 		UpdateCostDisplay();
+	}
+
+	public void InputValueChanged()
+	{
+		if (seedsSlider.value != float.Parse(inputField.text))
+		{
+			seedsSlider.value = float.Parse(inputField.text);
+		}
+	}
+
+	public void SliderValueChanged()
+	{
+		if (float.Parse(inputField.text) != seedsSlider.value)
+		{
+			inputField.text = seedsSlider.value.ToString();
+		}
 	}
 
 	public void UpdateCostDisplay()
