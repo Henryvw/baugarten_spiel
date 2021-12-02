@@ -6,6 +6,7 @@ public class MarketHandler : MonoBehaviour
 	[Header("Parameters")]
 	[SerializeField] private int fixedCost = 100;
 	[SerializeField] private int perSeedCost = 1;
+	[SerializeField] private int perCropPrice = 1;
 
 	[Header("Object References")]
 	[SerializeField] private GameObject marketPanel = default;
@@ -69,7 +70,7 @@ public class MarketHandler : MonoBehaviour
 		if (EconomyManager.Instance.totalMoney >= totalCost)
 		{
 			EconomyManager.Instance.totalMoney -= totalCost;
-			currentField.PlantField(seedCount);
+			currentField.PlantField(seedCount, perCropPrice);
 			ClosePanel();
 		}
 		else

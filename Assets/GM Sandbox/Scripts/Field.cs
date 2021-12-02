@@ -50,7 +50,6 @@ public class Field : MonoBehaviour
 	}
 
 	[SerializeField] private FieldPreset[] presets = default;
-	[SerializeField] private int cropPrice = 10;
 	[SerializeField] private GameObject testPlant = default;
 
 	[Range(1f, 60f)]
@@ -63,6 +62,7 @@ public class Field : MonoBehaviour
 	public bool cropsFullyGrown = false;
 	private float playbackTime = 0f;
 	private int numberOfCrops = 0;
+	private int cropPrice = 1;
 
 	private List<GameObject> currentCrops = new List<GameObject>();
 	private FieldPreset selectedPreset;
@@ -126,18 +126,24 @@ public class Field : MonoBehaviour
 
 	// In building script: detect if Raycast is colliding with object tagged "field", if yes, on click call PlantField()
 	// currently called by Player Cursor as a separate click detection
-	public void PlantField(int seedCount)
+	public void PlantField(int seedCount, int newCropPrice)
 	{
 		if (hasCrops)
 		{
+			// TODO: replace with player affordance
 			Debug.Log(gameObject.name + " already has crops growing on it!");
 			return;
 		}
 
+		cropPrice = newCropPrice;
 		maxCrops = selectedPreset.GetArea();
 
 		if (seedCount > maxCrops)
 		{
+			int wastedSeedsCount = seedCount - maxCrops;
+			// TODO: replace with player affordance
+			Debug.Log("Wasted " + wastedSeedsCount + " seeds!");
+
 			numberOfCrops = maxCrops;
 		}
 		else
@@ -152,11 +158,14 @@ public class Field : MonoBehaviour
 	{
 		if (!cropsFullyGrown)
 		{
+			// TODO: replace with player affordance
 			Debug.Log("Can't harvest " + gameObject.name + " as crops are not grown.");
 			return;
 		}
 
+		// TODO: replace with player affordance
 		Debug.Log(gameObject.name + " has been harvested, yielding " + numberOfCrops + " crops!");
+
 		EconomyManager.Instance.totalMoney += cropPrice * numberOfCrops;
 
 		DestroyCurrentCrops();
@@ -186,17 +195,12 @@ public class Field : MonoBehaviour
 		int maxPoints = seedPoints.Length;
 		int numberOfPoints = (numberOfCrops * maxPoints) / maxCrops;
 		int coefficient = maxPoints / numberOfPoints;
-		int seedIndex = 0;
 		int pointIndex = 0;
 
-		while (seedIndex <= numberOfPoints)
+		while (pointIndex < maxPoints)
 		{
-			while (pointIndex < maxPoints)
-			{
-				CreateCropAtPoint(seedPoints[pointIndex]);
-				seedIndex++;
-				pointIndex += coefficient;
-			}
+			CreateCropAtPoint(seedPoints[pointIndex]);
+			pointIndex += coefficient;
 		}
 	}
 

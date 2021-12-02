@@ -31,7 +31,7 @@ public class PlayerCursor : MonoBehaviour
 		}
 	}
 
-	private void ResetToggles()
+	public void ResetToggles()
 	{
 		canInteractWithSeed = false;
 		canInteractWithHarvest = false;
