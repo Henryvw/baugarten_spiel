@@ -51,6 +51,7 @@ public class Field : MonoBehaviour
 
 	[SerializeField] private FieldPreset[] presets = default;
 	[SerializeField] private GameObject testPlant = default;
+	[SerializeField] private GameObject fieldFullyPlantedFX = default;
 
 	[Range(1f, 60f)]
 	[Tooltip("in seconds")]
@@ -155,7 +156,7 @@ public class Field : MonoBehaviour
 			}
 			else
 			{
-				// TODO: trigger 'Field Fully Planted' FX
+				TriggerFX(fieldFullyPlantedFX);
 			}
 		}
 
@@ -215,6 +216,12 @@ public class Field : MonoBehaviour
 		GameObject newPlant = Instantiate(selectedPlantPrefab, seed.transform.position, seed.transform.rotation) as GameObject;
 		newPlant.transform.parent = seed.transform;
 		currentCrops.Add(newPlant);
+	}
+
+	private void TriggerFX(GameObject fxPrefab)
+	{
+		GameObject newFX = Instantiate(fxPrefab, transform.position, fxPrefab.transform.rotation);
+		Destroy(newFX, 2f);
 	}
 
 	private GameObject GetPlantPrefab()

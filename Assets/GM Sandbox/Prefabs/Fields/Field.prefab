@@ -66,8 +66,8 @@ MonoBehaviour:
     areaType: 1
   - modelPrefab: {fileID: 2445518481296543062, guid: 14367501fa871534092e9a7182c34c26, type: 3}
     areaType: 2
-  cropPrice: 2
   testPlant: {fileID: 8702042520613297083, guid: 7252826a505022f49a208098e2f3054b, type: 3}
+  fieldFullyPlantedFX: {fileID: 379204647498913878, guid: 1e334c1677b72f14bab8691c5c58c805, type: 3}
   timeToGrow: 10
   hasCrops: 0
   cropsFullyGrown: 0
