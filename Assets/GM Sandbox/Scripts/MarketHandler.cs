@@ -75,7 +75,7 @@ public class MarketHandler : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Not enough money to purchase seeds.");
+			FindObjectOfType<PopUpHandler>().CreateNewPopUp($"Not enough money to buy {seedCount} seeds.");
 		}
 	}
 }

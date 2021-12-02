@@ -130,8 +130,7 @@ public class Field : MonoBehaviour
 	{
 		if (hasCrops)
 		{
-			// TODO: replace with player affordance
-			Debug.Log(gameObject.name + " already has crops growing on it!");
+			Debug.LogWarning("Crops already planted on this field.");
 			return;
 		}
 
@@ -141,8 +140,8 @@ public class Field : MonoBehaviour
 		if (seedCount > maxCrops)
 		{
 			int wastedSeedsCount = seedCount - maxCrops;
-			// TODO: replace with player affordance
-			Debug.Log("Wasted " + wastedSeedsCount + " seeds!");
+
+			FindObjectOfType<PopUpHandler>().CreateNewPopUp($"You wasted {wastedSeedsCount} seeds.");
 
 			numberOfCrops = maxCrops;
 		}
@@ -158,13 +157,11 @@ public class Field : MonoBehaviour
 	{
 		if (!cropsFullyGrown)
 		{
-			// TODO: replace with player affordance
-			Debug.Log("Can't harvest " + gameObject.name + " as crops are not grown.");
+			Debug.LogWarning("Crops are not ready to be harvested.");
 			return;
 		}
 
-		// TODO: replace with player affordance
-		Debug.Log(gameObject.name + " has been harvested, yielding " + numberOfCrops + " crops!");
+		FindObjectOfType<PopUpHandler>().CreateNewPopUp($"You harvested {numberOfCrops} crops!");
 
 		EconomyManager.Instance.totalMoney += cropPrice * numberOfCrops;
 
