@@ -148,6 +148,15 @@ public class Field : MonoBehaviour
 		else
 		{
 			numberOfCrops = seedCount;
+
+			if (numberOfCrops != maxCrops)
+			{
+				FindObjectOfType<PopUpHandler>().CreateNewPopUp($"You planted the field partially.");
+			}
+			else
+			{
+				// TODO: trigger 'Field Fully Planted' FX
+			}
 		}
 
 		CreateCrops();
