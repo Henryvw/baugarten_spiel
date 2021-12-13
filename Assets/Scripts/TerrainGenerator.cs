@@ -53,8 +53,6 @@ public class TerrainGenerator : MonoBehaviour
 		//Debug.Log("FixedUpate is getting called");
 		CreateTerrainGeometry();
 		UpdateMesh();
-		GrabTerrain();
-
 	}
 
 	void CreateTerrainGeometry()
@@ -97,36 +95,6 @@ public class TerrainGenerator : MonoBehaviour
 			}
 			vertex++;
 		}
-	}
-
-	void GrabTerrain()
-	{
-		//GL.wireframe = true;
-		Mesh terrain_mesh = terrain.GetComponent<MeshFilter>().mesh;
-		// ... after preparing vertices, uvs and triangle indices;
-		// assign mesh data
-		terrain_mesh.Clear(false);
-		//terrain_mesh.vertices = vertices;
-		terrain_mesh.subMeshCount = 2;
-		// submesh 0: main-mesh
-		//terrain_mesh.uv = uvs;
-		terrain_mesh.SetTriangles(triangles, 0);
-		// submesh 1: wire-frame
-		// 3 lines require 6 indices per triangle which has 3 indices at main-mesh, so double indices count
-		//int[] wires = new int[triangles.Length * 2];
-		//for (int iTria = 0; iTria < trianglesCount; iTria++)
-		//{
-		//	for (int iVertex = 0; iVertex < 3; iVertex++)
-	//		{
-	//			wires[6 * iTria + 2 * iVertex] = triangles[3 * iTria + iVertex];
-	//			wires[6 * iTria + 2 * iVertex + 1] = triangles[3 * iTria + (iVertex + 1) % 3];
-	//		}
-	//	}
-	//	mesh.SetIndices(wires, MeshTopology.Lines, 1);
-
-		//Destroy(GameObject.Find("Terrain"));
-		//Mesh.triangles;
-
 	}
 
 	// Update is called once per frame
