@@ -48,8 +48,8 @@ public class MousePointer : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log("Left button clicked first time");
-			Debug.Log("selectedBuilding is " + selectedBuilding);
+			// Debug.Log("Left button clicked first time");
+			// Debug.Log("selectedBuilding is " + selectedBuilding);
 			//			Debug.Log("Moving LEFT: mousePositionX =" + Input.mousePosition.x);
 			if (selectedBuilding != null)
 			{
@@ -58,7 +58,7 @@ public class MousePointer : MonoBehaviour
 		}
 		else if (Input.GetMouseButtonDown(1))
 		{
-			Debug.Log("Right button clicked");
+			// Debug.Log("Right button clicked");
 			Destroy(selectedBuilding);
 
 			// Had to add this after debugging. Without this step on Right-click, the Select methods are confused and don't reassign their objects.
@@ -105,8 +105,8 @@ public class MousePointer : MonoBehaviour
 
 	public void SelectHouse()
 	{
-		Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
-		Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
+		// Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
+		// Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
 
 		if (selectedBuilding != null)
 		{
@@ -119,9 +119,9 @@ public class MousePointer : MonoBehaviour
 			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
 			currentSpawnObject = GameObject.Find("House");
-			Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
+			// Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
 			selectedBuilding = Instantiate(currentSpawnObject);
-			Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
+			// Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
 			// selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 			selectedBuilding.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
 		}
@@ -129,8 +129,8 @@ public class MousePointer : MonoBehaviour
 
 	public void SelectClearLandHoe()
 	{
-		Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
-		Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
+		// Debug.Log("currentSpawnObject before ANYTHING else, just on click = " + currentSpawnObject);
+		// Debug.Log("selectedBuilding before ANYTHING else, just on click = " + selectedBuilding);
 
 		if (selectedBuilding != null)
 		{
@@ -143,9 +143,9 @@ public class MousePointer : MonoBehaviour
 			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
 			currentSpawnObject = GameObject.Find("Field");
-			Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
+			// Debug.Log("currentSpawnObject after finding the house = " + currentSpawnObject);
 			selectedBuilding = Instantiate(currentSpawnObject);
-			Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
+			// Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
 			// selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 			selectedBuilding.GetComponent<BoxCollider>().enabled = false;
@@ -163,9 +163,9 @@ public class MousePointer : MonoBehaviour
 			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
 			currentSpawnObject = GameObject.Find("EquilateralTriangleTool");
-			Debug.Log(currentSpawnObject);
+			// Debug.Log(currentSpawnObject);
 			selectedBuilding = Instantiate(currentSpawnObject);
-			Debug.Log(selectedBuilding);
+			// Debug.Log(selectedBuilding);
 			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 
 		}
@@ -182,9 +182,9 @@ public class MousePointer : MonoBehaviour
 			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
 			currentSpawnObject = GameObject.Find("IsoscelesTriangleTool");
-			Debug.Log(currentSpawnObject);
+			// Debug.Log(currentSpawnObject);
 			selectedBuilding = Instantiate(currentSpawnObject);
-			Debug.Log(selectedBuilding);
+			// Debug.Log(selectedBuilding);
 			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 
 		}
@@ -201,9 +201,9 @@ public class MousePointer : MonoBehaviour
 			// Also here this is a place to explore maybe a Baugarten equation coming into contact with a space
 
 			currentSpawnObject = GameObject.Find("RectangleTool");
-			Debug.Log(currentSpawnObject);
+			// Debug.Log(currentSpawnObject);
 			selectedBuilding = Instantiate(currentSpawnObject);
-			Debug.Log(selectedBuilding);
+			// Debug.Log(selectedBuilding);
 			selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 
 		}
