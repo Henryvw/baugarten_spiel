@@ -143,7 +143,7 @@ public class Field : MonoBehaviour
         {
             int wastedSeedsCount = seedCount - maxCrops;
 
-            FindObjectOfType<PopUpHandler>().CreateNewPopUp($"You wasted {wastedSeedsCount} seeds.");
+            FindObjectOfType<PopUpHandler>().CreateNewPopUp($"You planted the field fully, but wasted some seeds.");
 
             numberOfCrops = maxCrops;
         }
