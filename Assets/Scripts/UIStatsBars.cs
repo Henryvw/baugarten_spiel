@@ -11,7 +11,7 @@ public class UIStatsBars : MonoBehaviour
     void Start()
     {
 	    moneyBar = gameObject.GetComponent<Text>();
-	    Debug.Log(moneyBar.text);
+	//	    Debug.Log(moneyBar.text);
 	//moneyBar = "hey";
 	     //Debug.Log(moneyBar.textDisplay);
 //
