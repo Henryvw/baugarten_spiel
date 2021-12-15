@@ -9,19 +9,24 @@ public class MousePointer : MonoBehaviour
 	RaycastHit hit;
 	Ray ray;
 
-	public GameObject selectedBuilding;
+	[SerializeField]
+		private GameObject selectedBuilding = default;
+
 	GameObject tmpObject;
 
-	public GameObject currentSpawnObject;
+	GameObject currentSpawnObject;
 
-	public GameObject FormulasToolkitPanel;
-	public bool formulasToolkitPanelIsActive;
+	[SerializeField]
+		private GameObject FormulasToolkitPanel;
+		private bool formulasToolkitPanelIsActive;
 
-	public GameObject BuildingsPanel;
-	public bool buildingsPanelIsActive;
+	[SerializeField]
+		private GameObject BuildingsPanel;
+		private bool buildingsPanelIsActive;
 
-	public GameObject SeedsPanel;
-	public bool seedsPanelIsActve;
+	[SerializeField]
+		private GameObject SeedsPanel;
+		private bool seedsPanelIsActve;
 
 	// Start is called before the first frame update
 	void Start()
