@@ -89,7 +89,9 @@ public class MousePointer : MonoBehaviour
 
 			Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
 			tmpObject.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), tmpObject.transform.rotation);
-			tmpObject.GetComponent<MeshRenderer>().material.color = Color.white;
+			var house_parts = tmpObject.GetComponentsInChildren(typeof(MeshRenderer));
+				foreach (MeshRenderer house_item in house_parts)
+					house_item.material.color = Color.white;
 
 			// Reenables the collider on the field so that it's "plantable"
 			if (tmpObject.GetComponent<BoxCollider>() != null)
@@ -122,7 +124,9 @@ public class MousePointer : MonoBehaviour
 			selectedBuilding = Instantiate(currentSpawnObject);
 			// Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
 			// selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
-			selectedBuilding.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+			var parts_of_house = selectedBuilding.GetComponentsInChildren(typeof(MeshRenderer));
+				foreach (MeshRenderer house_item in parts_of_house)
+					house_item.material.color = Color.green;
 		}
 	}
 
