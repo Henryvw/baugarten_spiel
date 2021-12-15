@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-	public int water;
-	public int electricity;
-	public int money;
-
-	public float startTime;
-	public float interval;
+	[SerializeField]
+	private int money;
+	private float startTime;
+	private float interval;
 
 	public void Start()
 	{
@@ -41,9 +39,9 @@ public class Building : MonoBehaviour
 
 	}
 
-	void AddWater()
-	{
-		EconomyManager.Instance.totalWater = 100;
-	}
+	// void AddWater()
+	// {
+//		EconomyManager.Instance.totalWater = 100;
+//	}
 
 }
