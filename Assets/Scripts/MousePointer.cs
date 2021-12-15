@@ -17,16 +17,16 @@ public class MousePointer : MonoBehaviour
 	GameObject currentSpawnObject;
 
 	[SerializeField]
-		private GameObject FormulasToolkitPanel;
-		private bool formulasToolkitPanelIsActive;
+		private GameObject FormulasToolkitPanel = default;
+		private bool formulasToolkitPanelIsActive = default;
 
 	[SerializeField]
-		private GameObject BuildingsPanel;
-		private bool buildingsPanelIsActive;
+		private GameObject BuildingsPanel = default;
+		private bool buildingsPanelIsActive = default;
 
 	[SerializeField]
-		private GameObject SeedsPanel;
-		private bool seedsPanelIsActve;
+		private GameObject SeedsPanel = default;
+		private bool seedsPanelIsActve = default;
 
 	// Start is called before the first frame update
 	void Start()
