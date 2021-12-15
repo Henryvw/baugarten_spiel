@@ -100,6 +100,7 @@ public class MousePointer : MonoBehaviour
 			}
 
 			EconomyManager.Instance.totalMoney -= 100;
+			Destroy(selectedBuilding);
 			selectedBuilding = null;
 		}
 	}
