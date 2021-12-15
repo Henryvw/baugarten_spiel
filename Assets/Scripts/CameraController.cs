@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-	public float scrollSpeed = 70f;
-	public int padding = 5;
+	[SerializeField]
+		private float scrollSpeed = 70f;
+		private int padding = 5;
 
 	// Update is called once per frame
 	void Update()
