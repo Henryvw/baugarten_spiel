@@ -6,6 +6,7 @@ public class SubMenuButtonHandler : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private bool startsLocked = false;
     [SerializeField] private int unlockCost = 100;
+    [SerializeField] private bool needsFarmhouse = false;
 
     [Header("Object References")]
     [SerializeField] private GameObject lockedButton = default;
@@ -38,7 +39,19 @@ public class SubMenuButtonHandler : MonoBehaviour
 
     public void TryUnlock()
     {
-        if (unlockCost <= EconomyManager.Instance.totalMoney)
+        bool canBeUnlocked = false;
+
+        if (needsFarmhouse)
+        {
+            canBeUnlocked = FarmhouseExists();
+            unlockCost = 0;
+        }
+        else
+        {
+            canBeUnlocked = unlockCost <= EconomyManager.Instance.totalMoney;
+        }
+
+        if (canBeUnlocked)
         {
             EconomyManager.Instance.totalMoney -= unlockCost;
             UnlockButton();
@@ -47,6 +60,16 @@ public class SubMenuButtonHandler : MonoBehaviour
         {
             Debug.Log("Not enough money to purchase unlock.");
         }
+    }
+
+    private bool FarmhouseExists()
+    {
+        if (FindObjectOfType<Farmhouse>() != null)
+        {
+            return true;
+        }
+
+        return false;
     }
 
 }
