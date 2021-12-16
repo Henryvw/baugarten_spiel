@@ -7236,6 +7236,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3e9581ea71c3c63488d447b4d462c0e2, type: 3}
     - target: {fileID: 3311426269075844961, guid: e54b8b0cc0b0b444280a70fc49b69d6a, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311426269075844961, guid: e54b8b0cc0b0b444280a70fc49b69d6a, type: 3}
       propertyPath: menuHandler
       value: 
       objectReference: {fileID: 569870765}
@@ -7457,6 +7461,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7aa1444e2ca832841bb23898d20cac1a, type: 3}
+    - target: {fileID: 3311426269075844961, guid: e54b8b0cc0b0b444280a70fc49b69d6a, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3311426269075844961, guid: e54b8b0cc0b0b444280a70fc49b69d6a, type: 3}
       propertyPath: menuHandler
       value: 
@@ -8615,6 +8623,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 531484444100140625}
     m_Modifications:
+    - target: {fileID: 3311426269075844961, guid: e54b8b0cc0b0b444280a70fc49b69d6a, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3311426269075844961, guid: e54b8b0cc0b0b444280a70fc49b69d6a, type: 3}
       propertyPath: menuHandler
       value: 
