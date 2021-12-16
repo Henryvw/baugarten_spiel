@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,11 @@ public class MenuHandler : MonoBehaviour
         allPanels.Add(buildingsPanel);
         allPanels.Add(cropsPanel);
         allPanels.Add(formulasPanel);
-        ClosePanels();
+
+        foreach (GameObject panel in allPanels)
+        {
+            panel.SetActive(false);
+        }
     }
 
     public void OpenBuildingsPanel()
@@ -36,7 +41,10 @@ public class MenuHandler : MonoBehaviour
     {
         foreach (GameObject panel in allPanels)
         {
-            panel.SetActive(false);
+            if (panel.activeSelf)
+            {
+                StartCoroutine(DisablePanel(panel));
+            }
         }
     }
 
@@ -44,7 +52,7 @@ public class MenuHandler : MonoBehaviour
     {
         if (targetPanel.activeSelf)
         {
-            ClosePanels();
+            StartCoroutine(DisablePanel(targetPanel));
         }
         else
         {
@@ -53,5 +61,12 @@ public class MenuHandler : MonoBehaviour
                 panel.SetActive(panel == targetPanel);
             }
         }
+    }
+
+    private IEnumerator DisablePanel(GameObject panel)
+    {
+        panel.GetComponent<Animator>().SetTrigger("SlideOut");
+        yield return new WaitForSeconds(0.5f);
+        panel.SetActive(false);
     }
 }
