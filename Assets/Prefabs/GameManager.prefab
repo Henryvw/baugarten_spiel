@@ -66,6 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08106a91a6d04a541aa231d7ea1ba66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameWonText: Game Won!
+  gameLostText: Game Over
   winTargetCurrency: 1000
-  loseTargetCurrency: 0
+  loseTargetCurrency: 100
   resetGameDelay: 1

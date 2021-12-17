@@ -2,155 +2,157 @@ using UnityEngine;
 
 public class PlayerCursor : MonoBehaviour
 {
-	[System.Serializable]
-	public struct CursorMapping
-	{
-		public CursorType type;
-		public Texture2D texture;
-		public Vector2 hotspot;
-	}
+    [System.Serializable]
+    public struct CursorMapping
+    {
+        public CursorType type;
+        public Texture2D texture;
+        public Vector2 hotspot;
+    }
 
-	[SerializeField] private CursorMapping[] cursorMappings = null;
+    [SerializeField] private CursorMapping[] cursorMappings = null;
 
-	private bool canInteractWithSeed = false;
-	private bool canInteractWithHarvest = false;
-	private bool canInteractWithFormula = false;
-	private GameObject currentTarget;
+    private bool canInteractWithSeed = false;
+    private bool canInteractWithHarvest = false;
+    private bool canInteractWithFormula = false;
+    private GameObject currentTarget;
 
-	private void Update()
-	{
-		if (Input.GetMouseButtonDown(1)) { ResetToggles(); }
+    private void Update()
+    {
+        // Debug.DrawRay(GetMouseRay().origin, GetMouseRay().direction * 100000, Color.red);
 
-		bool isActive = canInteractWithSeed || canInteractWithHarvest || canInteractWithFormula;
+        if (Input.GetMouseButtonDown(1)) { ResetToggles(); }
 
-		if (!isActive) { SetCursor(CursorType.None); return; }
+        bool isActive = canInteractWithSeed || canInteractWithHarvest || canInteractWithFormula;
 
-		if (InteractWithObject())
-		{
-			HandleFieldInteraction();
-		}
-	}
+        if (!isActive) { SetCursor(CursorType.None); return; }
 
-	public void ResetToggles()
-	{
-		canInteractWithSeed = false;
-		canInteractWithHarvest = false;
-		canInteractWithFormula = false;
-	}
+        if (InteractWithObject())
+        {
+            HandleFieldInteraction();
+        }
+    }
 
-	private bool InteractWithObject()
-	{
-		GameObject target;
-		RaycastHit hit;
-		bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
-		if (hasHit)
-		{
-			target = hit.collider.gameObject;
-			currentTarget = target;
-			return true;
-		}
-		currentTarget = null;
-		return false;
-	}
+    public void ResetToggles()
+    {
+        canInteractWithSeed = false;
+        canInteractWithHarvest = false;
+        canInteractWithFormula = false;
+    }
 
-	private void HandleFieldInteraction()
-	{
-		if (currentTarget.gameObject.tag != "Field")
-		{
-			SetCursor(CursorType.NotInteractable);
-			return;
-		}
+    private bool InteractWithObject()
+    {
+        GameObject target;
+        RaycastHit hit;
+        bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+        if (hasHit)
+        {
+            target = hit.collider.gameObject;
+            currentTarget = target;
+            return true;
+        }
+        currentTarget = null;
+        return false;
+    }
 
-		if (canInteractWithSeed && InteractWithSeed()) { return; }
+    private void HandleFieldInteraction()
+    {
+        if (currentTarget.gameObject.tag != "Field")
+        {
+            SetCursor(CursorType.NotInteractable);
+            return;
+        }
 
-		if (canInteractWithHarvest && InteractWithHarvest()) { return; }
+        if (canInteractWithSeed && InteractWithSeed()) { return; }
 
-		if (canInteractWithFormula && InteractWithFormula()) { return; }
-	}
+        if (canInteractWithHarvest && InteractWithHarvest()) { return; }
 
-	private bool InteractWithSeed()
-	{
-		Field field = currentTarget.GetComponent<Field>();
-		if (!field.hasCrops)
-		{
-			SetCursor(CursorType.PlantableField);
+        if (canInteractWithFormula && InteractWithFormula()) { return; }
+    }
 
-			if (Input.GetMouseButtonDown(0))
-			{
-				FindObjectOfType<MarketHandler>().OpenPanel(field);
-				canInteractWithSeed = false;
-			}
-			return true;
-		}
-		return false;
-	}
+    private bool InteractWithSeed()
+    {
+        Field field = currentTarget.GetComponent<Field>();
+        if (!field.hasCrops)
+        {
+            SetCursor(CursorType.PlantableField);
 
-	private bool InteractWithHarvest()
-	{
-		Field field = currentTarget.GetComponent<Field>();
-		if (field.hasCrops && field.cropsFullyGrown)
-		{
-			SetCursor(CursorType.HarvestableField);
+            if (Input.GetMouseButtonDown(0))
+            {
+                FindObjectOfType<MarketHandler>().OpenPanel(field);
+                canInteractWithSeed = false;
+            }
+            return true;
+        }
+        return false;
+    }
 
-			if (Input.GetMouseButtonDown(0))
-			{
-				field.HarvestField();
-				canInteractWithHarvest = false;
-			}
-			return true;
-		}
-		return false;
-	}
+    private bool InteractWithHarvest()
+    {
+        Field field = currentTarget.GetComponent<Field>();
+        if (field.hasCrops && field.cropsFullyGrown)
+        {
+            SetCursor(CursorType.HarvestableField);
 
-	private bool InteractWithFormula()
-	{
-		Field field = currentTarget.GetComponent<Field>();
+            if (Input.GetMouseButtonDown(0))
+            {
+                field.HarvestField();
+                canInteractWithHarvest = false;
+            }
+            return true;
+        }
+        return false;
+    }
 
-		SetCursor(CursorType.FormulaField);
+    private bool InteractWithFormula()
+    {
+        Field field = currentTarget.GetComponent<Field>();
 
-		if (Input.GetMouseButtonDown(0))
-		{
-			FindObjectOfType<FormulaHandler>().OpenPanel(field);
-			canInteractWithFormula = false;
-		}
-		return true;
-	}
+        SetCursor(CursorType.FormulaField);
 
-	private static Ray GetMouseRay()
-	{
-		return Camera.main.ScreenPointToRay(Input.mousePosition);
-	}
+        if (Input.GetMouseButtonDown(0))
+        {
+            FindObjectOfType<FormulaHandler>().OpenPanel(field);
+            canInteractWithFormula = false;
+        }
+        return true;
+    }
 
-	private void SetCursor(CursorType type)
-	{
-		CursorMapping mapping = GetCursorMapping(type);
-		Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
-	}
+    private static Ray GetMouseRay()
+    {
+        return Camera.main.ScreenPointToRay(Input.mousePosition);
+    }
 
-	private CursorMapping GetCursorMapping(CursorType type)
-	{
-		foreach (CursorMapping mapping in cursorMappings)
-		{
-			if (mapping.type == type)
-			{
-				return mapping;
-			}
-		}
-		return cursorMappings[0];
-	}
+    private void SetCursor(CursorType type)
+    {
+        CursorMapping mapping = GetCursorMapping(type);
+        Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+    }
 
-	public void ToggleSeedInteraction(bool value)
-	{
-		canInteractWithSeed = value;
-	}
+    private CursorMapping GetCursorMapping(CursorType type)
+    {
+        foreach (CursorMapping mapping in cursorMappings)
+        {
+            if (mapping.type == type)
+            {
+                return mapping;
+            }
+        }
+        return cursorMappings[0];
+    }
 
-	public void ToggleHarvestInteraction(bool value)
-	{
-		canInteractWithHarvest = value;
-	}
+    public void ToggleSeedInteraction(bool value)
+    {
+        canInteractWithSeed = value;
+    }
 
-	public void ToggleFormulaInteraction(bool value)
-	{
-		canInteractWithFormula = value;
-	}
+    public void ToggleHarvestInteraction(bool value)
+    {
+        canInteractWithHarvest = value;
+    }
+
+    public void ToggleFormulaInteraction(bool value)
+    {
+        canInteractWithFormula = value;
+    }
 }

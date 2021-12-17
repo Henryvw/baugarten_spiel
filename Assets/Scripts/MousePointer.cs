@@ -43,7 +43,7 @@ public class MousePointer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.DrawRay(ray.origin, ray.direction * 2000, Color.green, 3000, false);
+            // Debug.DrawRay(ray.origin, ray.direction * 2000, Color.green, 3000, false);
         }
 
         if (Input.GetMouseButtonDown(0))
