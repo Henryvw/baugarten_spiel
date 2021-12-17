@@ -8497,6 +8497,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a93a65a55c0edf547b24c478bf457e73, type: 3}
+    - target: {fileID: 1812636878922159318, guid: 8d9f3f2e455b0bb49b05e5d957c43be7, type: 3}
+      propertyPath: startsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812636878922159318, guid: 8d9f3f2e455b0bb49b05e5d957c43be7, type: 3}
+      propertyPath: needsFarmhouse
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8411750196321509227, guid: 8d9f3f2e455b0bb49b05e5d957c43be7, type: 3}
       propertyPath: m_Name
       value: Sub Menu Button - Field
