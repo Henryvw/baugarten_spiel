@@ -52,6 +52,7 @@ public class Field : MonoBehaviour
     [SerializeField] private FieldPreset[] presets = default;
     [SerializeField] private GameObject testPlant = default;
     [SerializeField] private GameObject fieldFullyPlantedFX = default;
+    [SerializeField] private GameObject fieldReadyToHarvestFX = default;
     [SerializeField] private bool cropsEvenlyPlanted = false;
 
     [Range(1f, 60f)]
@@ -70,6 +71,7 @@ public class Field : MonoBehaviour
     private FieldPreset selectedPreset;
     private GameObject selectedPlantPrefab;
     private int maxCrops;
+    private GameObject fxToDestroy;
 
     private void Start()
     {
@@ -99,6 +101,10 @@ public class Field : MonoBehaviour
         if (playbackTime >= timeToGrow)
         {
             cropsFullyGrown = true;
+            if (fxToDestroy == null)
+            {
+                TriggerFX(fieldReadyToHarvestFX, 0f);
+            }
         }
     }
 
@@ -157,7 +163,7 @@ public class Field : MonoBehaviour
             }
             else
             {
-                TriggerFX(fieldFullyPlantedFX);
+                TriggerFX(fieldFullyPlantedFX, 2f);
             }
         }
 
@@ -178,6 +184,11 @@ public class Field : MonoBehaviour
         FindObjectOfType<GameManager>().TryWinOrLose();
 
         DestroyCurrentCrops();
+
+        if (fxToDestroy != null)
+        {
+            Destroy(fxToDestroy);
+        }
 
         playbackTime = 0f;
         numberOfCrops = 0;
@@ -229,10 +240,18 @@ public class Field : MonoBehaviour
         currentCrops.Add(newPlant);
     }
 
-    private void TriggerFX(GameObject fxPrefab)
+    private void TriggerFX(GameObject fxPrefab, float duration)
     {
         GameObject newFX = Instantiate(fxPrefab, transform.position, fxPrefab.transform.rotation);
-        Destroy(newFX, 2f);
+
+        if (duration != 0)
+        {
+            Destroy(newFX, duration);
+        }
+        else
+        {
+            fxToDestroy = newFX;
+        }
     }
 
     private GameObject GetPlantPrefab()
