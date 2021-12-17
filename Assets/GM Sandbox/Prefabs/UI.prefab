@@ -670,7 +670,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 143943389685025750}
         m_TargetAssemblyTypeName: MarketHandler, Assembly-CSharp
         m_MethodName: InputValueChanged
         m_Mode: 1
