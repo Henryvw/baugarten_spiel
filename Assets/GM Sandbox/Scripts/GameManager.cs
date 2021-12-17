@@ -4,31 +4,41 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private string gameWonText = "Game Won!";
+    [SerializeField] private string gameLostText = "Game Over";
     [SerializeField] private int winTargetCurrency = 1000;
     [SerializeField] private int loseTargetCurrency = 0;
     [SerializeField] private float resetGameDelay = 1f;
 
+    private bool gameHasEnded = false;
+
     public void TryWinOrLose()
     {
+        if (gameHasEnded) { return; }
+
         if (EconomyManager.Instance.totalMoney <= loseTargetCurrency)
         {
-            TriggerGameOver();
+            gameHasEnded = true;
+            StartCoroutine(TriggerGameOver());
         }
         else if (EconomyManager.Instance.totalMoney >= winTargetCurrency)
         {
-            TriggerWin();
+            gameHasEnded = true;
+            StartCoroutine(TriggerWin());
         }
     }
 
-    private void TriggerGameOver()
+    private IEnumerator TriggerGameOver()
     {
-        FindObjectOfType<PopUpHandler>().CreateNewPopUp("Game Over");
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<PopUpHandler>().CreateNewPopUp(gameLostText);
         StartCoroutine(ResetGame());
     }
 
-    private void TriggerWin()
+    private IEnumerator TriggerWin()
     {
-        FindObjectOfType<PopUpHandler>().CreateNewPopUp("Game Won!");
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<PopUpHandler>().CreateNewPopUp(gameWonText);
         StartCoroutine(ResetGame());
     }
 
