@@ -98,12 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e6bc218d68a4b8a9f7815f85a9ede2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MIN_X: 69.5
-  MIN_Y: 48.2
-  MIN_Z: -13.9
-  MAX_X: 206.6
-  MAX_Y: 48.2
-  MAX_Z: 179.5
+  minX: 69.5
+  minY: 48.2
+  minZ: -13.9
+  maxX: 206.6
+  maxY: 48.2
+  maxZ: 179.5
   scrollSpeed: 70
   padding: 5
 --- !u!1 &5222929051549948782
