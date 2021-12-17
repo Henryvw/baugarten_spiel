@@ -175,6 +175,7 @@ public class Field : MonoBehaviour
         FindObjectOfType<PopUpHandler>().CreateNewPopUp($"You harvested {numberOfCrops} crops!");
 
         EconomyManager.Instance.totalMoney += cropPrice * numberOfCrops;
+        FindObjectOfType<GameManager>().TryWinOrLose();
 
         DestroyCurrentCrops();
 

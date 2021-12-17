@@ -458,18 +458,6 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 697310751}
-    - target: {fileID: 202862668813465356, guid: f31d6e7480b154dde9c4d47bc95cf5bf, type: 3}
-      propertyPath: SeedsPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 202862668813465356, guid: f31d6e7480b154dde9c4d47bc95cf5bf, type: 3}
-      propertyPath: BuildingsPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 202862668813465356, guid: f31d6e7480b154dde9c4d47bc95cf5bf, type: 3}
-      propertyPath: FormulasToolkitPanel
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 202862668813465357, guid: f31d6e7480b154dde9c4d47bc95cf5bf, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -99462,6 +99450,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 143943389685025750, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
+      propertyPath: perCropPrice
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1751361424486650931, guid: c0a4f42cebab2214b8b442e73b1d5932, type: 3}
       propertyPath: m_RootOrder
       value: 9

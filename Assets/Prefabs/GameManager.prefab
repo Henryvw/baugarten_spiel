@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 202862668813465357}
   - component: {fileID: 202862668813465356}
+  - component: {fileID: 2064943923}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -53,3 +54,18 @@ MonoBehaviour:
   buildingsPanelIsActive: 0
   SeedsPanel: {fileID: 0}
   seedsPanelIsActve: 0
+--- !u!114 &2064943923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202862668813465359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08106a91a6d04a541aa231d7ea1ba66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winTargetCurrency: 1000
+  loseTargetCurrency: 0
+  resetGameDelay: 1
