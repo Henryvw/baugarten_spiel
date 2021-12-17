@@ -6,8 +6,6 @@ public class EconomyManager : MonoBehaviour
 {
 	private static EconomyManager _instance;
 
-	public int totalWater;
-	public int totalElectricity;
 	public int totalMoney;
 
 	public static EconomyManager Instance
