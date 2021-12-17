@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-	[SerializeField]
-	private int money;
-	private float startTime;
-	private float interval;
+	[SerializeField] private int money;
+	[SerializeField] private float startTime;
+	[SerializeField] private float interval;
 
 	public void Start()
 	{

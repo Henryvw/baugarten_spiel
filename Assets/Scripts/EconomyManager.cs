@@ -6,10 +6,7 @@ public class EconomyManager : MonoBehaviour
 {
 	private static EconomyManager _instance;
 
-	[SerializeField]
-		private int totalWater;
-		private int totalElectricity;
-		private int totalMoney;
+	public int totalMoney;
 
 	public static EconomyManager Instance
 	{

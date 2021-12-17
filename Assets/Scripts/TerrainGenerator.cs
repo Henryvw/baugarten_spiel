@@ -10,26 +10,26 @@ public class TerrainGenerator : MonoBehaviour
 
 	int[] triangles;
 
-	public int xBlocks = 30;
-	public int zBlocks = 30;
+	[SerializeField] private int xBlocks = 30;
+	[SerializeField] private int zBlocks = 30;
 
 	public float y;
 
 	[Range(0.1f, 10.0f)]
-	public float xOffset = 0.5f;
+	[SerializeField] private float xOffset = 0.5f;
 	[Range(0.1f, 10.0f)]
-	public float zOffset = 0.5f;
+	[SerializeField] private float zOffset = 0.5f;
 	[Range(0.1f, 10.0f)]
-	public float yOffset = 1.5f;
+	[SerializeField] private float yOffset = 1.5f;
 
-	public int numberOfTrees;
-	public GameObject tree;
+	[SerializeField] private int numberOfTrees;
+	[SerializeField] private GameObject tree;
 
-	public int numberOfSmallRocks;
-	public GameObject smallrock;
+	[SerializeField] private int numberOfSmallRocks;
+	[SerializeField] private GameObject smallrock;
 	
-	public int numberOfLargeRocks;
-	public GameObject largerock;
+	[SerializeField] private int numberOfLargeRocks;
+	[SerializeField] private GameObject largerock;
 
 	GameObject terrain;
 	Component terrain_mesh;
