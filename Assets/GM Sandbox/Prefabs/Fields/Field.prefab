@@ -43,10 +43,10 @@ BoxCollider:
   m_GameObject: {fileID: 3985197456339104540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.609516, y: 4.338002, z: 9.757137}
-  m_Center: {x: -0.12885284, y: 1.6690007, z: -1.3705654}
+  m_Size: {x: 9.609516, y: 4.338002, z: 9.933729}
+  m_Center: {x: 0, y: 1.6690006, z: -0.08829594}
 --- !u!114 &3985197456339104543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +68,8 @@ MonoBehaviour:
     areaType: 2
   testPlant: {fileID: 8702042520613297083, guid: 7252826a505022f49a208098e2f3054b, type: 3}
   fieldFullyPlantedFX: {fileID: 379204647498913878, guid: 1e334c1677b72f14bab8691c5c58c805, type: 3}
+  fieldReadyToHarvestFX: {fileID: 7056329004782050090, guid: e930ffabda866d549a8e4676848b6114, type: 3}
+  cropsEvenlyPlanted: 0
   timeToGrow: 10
   hasCrops: 0
   cropsFullyGrown: 0
