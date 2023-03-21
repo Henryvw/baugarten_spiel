@@ -11,7 +11,7 @@ public class Building : MonoBehaviour
 	public void Start()
 	{
 		startTime = 0.0f;
-		EconomyManager.Instance.totalMoney = 400;
+		EconomyManager.Instance.totalMoney = 1000;
 	}
 
 	public void FixedUpdate()

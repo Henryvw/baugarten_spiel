@@ -68,6 +68,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameWonText: Game Won!
   gameLostText: Game Over
-  winTargetCurrency: 1000
+  winTargetCurrency: 5000
   loseTargetCurrency: 100
   resetGameDelay: 1

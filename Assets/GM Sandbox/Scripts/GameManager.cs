@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private string gameWonText = "Game Won!";
     [SerializeField] private string gameLostText = "Game Over";
-    [SerializeField] private int winTargetCurrency = 1000;
+    [SerializeField] private int winTargetCurrency = 3000;
     [SerializeField] private int loseTargetCurrency = 0;
     [SerializeField] private float resetGameDelay = 1f;
 

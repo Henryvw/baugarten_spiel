@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MarketHandler : MonoBehaviour
 {
 	[Header("Parameters")]
-	[SerializeField] private int fixedCost = 100;
+	[SerializeField] private int fixedCost = 10;
 	[SerializeField] private int perSeedCost = 1;
 	[SerializeField] private int perCropPrice = 1;
 
