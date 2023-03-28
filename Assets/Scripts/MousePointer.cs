@@ -15,26 +15,26 @@ public class MousePointer : MonoBehaviour
 
 	GameObject currentSpawnObject;
 
-	[SerializeField] private GameObject FormulasToolkitPanel = default;
-	[SerializeField] private bool formulasToolkitPanelIsActive = default;
+//	[SerializeField] private GameObject FormulasToolkitPanel = default;
+//	[SerializeField] private bool formulasToolkitPanelIsActive = default;
 
 	[SerializeField] private GameObject BuildingsPanel = default;
 	[SerializeField] private bool buildingsPanelIsActive = default;
 
-	[SerializeField] private GameObject SeedsPanel = default;
-	[SerializeField] private bool seedsPanelIsActve = default;
+//	[SerializeField] private GameObject SeedsPanel = default;
+//	[SerializeField] private bool seedsPanelIsActve = default;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		FormulasToolkitPanel.SetActive(false);
-		formulasToolkitPanelIsActive = false;
+		//	FormulasToolkitPanel.SetActive(false);
+		//	formulasToolkitPanelIsActive = false;
 
-		BuildingsPanel.SetActive(false);
-		buildingsPanelIsActive = false;
+		//	BuildingsPanel.SetActive(false);
+		//	buildingsPanelIsActive = false;
 
-		SeedsPanel.SetActive(false);
-		seedsPanelIsActve = false;
+//		SeedsPanel.SetActive(false);
+//		seedsPanelIsActve = false;
 	}
 
 	// Update is called once per frame
@@ -71,8 +71,10 @@ public class MousePointer : MonoBehaviour
 			if (selectedBuilding != null)
 			{
 				// This is a place to explore maybe a Baugarten equation coming into contact with a space
-				Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
-				selectedBuilding.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), selectedBuilding.transform.rotation);
+				Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>()
+					.nearestGridPoint(hit.point);
+				selectedBuilding.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z),
+					selectedBuilding.transform.rotation);
 				//			    Debug.Log("In hover mode");
 
 			}
@@ -88,11 +90,13 @@ public class MousePointer : MonoBehaviour
 			tmpObject = Instantiate(selectedBuilding);
 			tmpObject.transform.position = hit.point;
 
-			Vector3 nearestPoint = GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
-			tmpObject.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z), tmpObject.transform.rotation);
+			Vector3 nearestPoint =
+				GameObject.Find("Terrain").GetComponent<TerrainGenerator>().nearestGridPoint(hit.point);
+			tmpObject.transform.SetPositionAndRotation(new Vector3(nearestPoint.x, 1, nearestPoint.z),
+				tmpObject.transform.rotation);
 			var house_parts = tmpObject.GetComponentsInChildren(typeof(MeshRenderer));
-				foreach (MeshRenderer house_item in house_parts)
-					house_item.material.color = Color.white;
+			foreach (MeshRenderer house_item in house_parts)
+				house_item.material.color = Color.white;
 
 			// Reenables the collider on the field so that it's "plantable"
 			if (tmpObject.GetComponent<BoxCollider>() != null)
@@ -127,8 +131,8 @@ public class MousePointer : MonoBehaviour
 			// Debug.Log("selectedBuilding after instantiating the currentSpawnObject = " + selectedBuilding);
 			// selectedBuilding.GetComponent<MeshRenderer>().material.color = Color.green;
 			var parts_of_house = selectedBuilding.GetComponentsInChildren(typeof(MeshRenderer));
-				foreach (MeshRenderer house_item in parts_of_house)
-					house_item.material.color = Color.green;
+			foreach (MeshRenderer house_item in parts_of_house)
+				house_item.material.color = Color.green;
 		}
 	}
 
@@ -214,7 +218,7 @@ public class MousePointer : MonoBehaviour
 		}
 	}
 
-	public void SelectFormulasToolkitPanel()
+/*	public void SelectFormulasToolkitPanel()
 	{
 		if (formulasToolkitPanelIsActive == true)
 		{
@@ -234,7 +238,7 @@ public class MousePointer : MonoBehaviour
 			seedsPanelIsActve = false;
 		}
 
-	}
+	}*/
 
 	public void SelectBuildingsPanel()
 	{
@@ -249,15 +253,15 @@ public class MousePointer : MonoBehaviour
 			BuildingsPanel.SetActive(true);
 			buildingsPanelIsActive = true;
 
-			FormulasToolkitPanel.SetActive(false);
-			formulasToolkitPanelIsActive = false;
+			//FormulasToolkitPanel.SetActive(false);
+			//formulasToolkitPanelIsActive = false;
 
-			SeedsPanel.SetActive(false);
-			seedsPanelIsActve = false;
+			//SeedsPanel.SetActive(false);
+			//seedsPanelIsActve = false;
 		}
 	}
 
-	public void SelectSeedsPanel()
+/*	public void SelectSeedsPanel()
 	{
 		if (seedsPanelIsActve == true)
 		{
@@ -270,16 +274,16 @@ public class MousePointer : MonoBehaviour
 			SeedsPanel.SetActive(true);
 			seedsPanelIsActve = true;
 
-			FormulasToolkitPanel.SetActive(false);
-			formulasToolkitPanelIsActive = false;
+	//		FormulasToolkitPanel.SetActive(false);
+	//		formulasToolkitPanelIsActive = false;
 
-			BuildingsPanel.SetActive(false);
-			buildingsPanelIsActive = false;
+	//		BuildingsPanel.SetActive(false);
+	//		buildingsPanelIsActive = false;
 		}
 	}
+}*/
+
 }
-
-
 
 // Summary of the process of these Methods (From Debugging Earlier)
 //1. When I left-click on the House button, it triggers the "SelectHouse" method of the assigned script.

@@ -588,7 +588,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   selectedBuilding: {fileID: 0}
-  currentSpawnObject: {fileID: 0}
   FormulasToolkitPanel: {fileID: 0}
   formulasToolkitPanelIsActive: 0
   BuildingsPanel: {fileID: 1782400217398483883}
